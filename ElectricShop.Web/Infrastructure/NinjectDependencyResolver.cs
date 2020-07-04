@@ -1,4 +1,7 @@
-﻿using Ninject;
+﻿using ElectricShop.Data.Abstract;
+using ElectricShop.Data.Entities;
+using Moq;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +32,14 @@ namespace ElectricShop.Web.Infrastructure
 
         private void AddBindings()
         {
+            Mock<IProductRepository> mock = new Mock<IProductRepository> ();
+            mock.Setup(m => m.Products).Returns(new List<Product>
+            {
+                new Product { Name = "TV", Price = 100 },
+                new Product { Name = "Smart speaker", Price = 75 }
+            });
 
+            kernel.Bind<IProductRepository>().ToConstant(mock.Object);
         }
     }
 }
