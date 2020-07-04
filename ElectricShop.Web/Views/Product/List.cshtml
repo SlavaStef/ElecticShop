@@ -6,7 +6,9 @@
 <div>
 @foreach (var p in Model.Products)
 {
-    @Html.Partial("ProductSummary", p)
+    <div>
+        @Html.Partial("ProductSummary", p)
+    </div>
 }
 </div>
 
