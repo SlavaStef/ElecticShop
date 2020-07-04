@@ -20,7 +20,7 @@ namespace ElectricShop.Web.Controllers
 
         public ViewResult Index(Cart cart, string returnUrl)
         {
-            return View(new CartIndexViewModel { Cart = GetCart(), ReturnUrl = returnUrl, Cart = cart });
+            return View(new CartIndexViewModel { ReturnUrl = returnUrl, Cart = cart });
         }
 
         public RedirectToRouteResult AddToCart(Cart cart, int productId, string returnUrl)
@@ -43,6 +43,11 @@ namespace ElectricShop.Web.Controllers
                 cart.RemoveLine(product);
             }
             return RedirectToAction("Index", new { returnUrl });
+        }
+
+        public PartialViewResult Summary(Cart cart)
+        {
+            return PartialView(cart);
         }
     }
 }
