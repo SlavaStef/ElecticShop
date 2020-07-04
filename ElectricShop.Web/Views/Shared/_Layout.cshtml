@@ -6,14 +6,25 @@
     <title>@ViewBag.Title</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">E-Shop</a>
+    </nav>
+        
+        <div class="row panel">
+            <div id="categories" class="col-xs-3">
+                Put something later
+            </div>
+            <div class="col-xs-8">
+                @RenderBody()
+            </div>
+        </div>
 
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
