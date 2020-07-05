@@ -245,21 +245,11 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\ProductSummary.cshtml" />
     <Content Include="Views\Navigation\Menu.cshtml" />
-<<<<<<< HEAD
-    <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Cart\Summary.cshtml" />
-    <Content Include="Views\Cart\Checkout.cshtml" />
-    <Content Include="Views\Cart\Completed.cshtml" />
-=======
->>>>>>> a4880705eee8b5fdc5112e421e1f8d52369a0733
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-<<<<<<< HEAD
     <Compile Include="Controllers\CartController.cs" />
-=======
->>>>>>> a4880705eee8b5fdc5112e421e1f8d52369a0733
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -281,6 +271,10 @@
     <Content Include="Views\Product\List.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\Completed.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Summary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
