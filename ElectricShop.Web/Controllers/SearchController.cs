@@ -16,7 +16,8 @@ namespace ElectricShop.Web.Controllers
             repository = productRepository;
         }
 
-        public ActionResult Index(string searchString)
+        [HttpGet]
+        public ActionResult Search(string searchString)
         {
             var items = repository.Products;
 
@@ -24,6 +25,8 @@ namespace ElectricShop.Web.Controllers
             {
                 items = items.Where(s => s.Name.Contains(searchString));
             }
+
+            ViewBag.SearchResult = items.ToList();
 
             return View(items.ToList());
         }

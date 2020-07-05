@@ -13,6 +13,15 @@
 <body>
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
         <a class="navbar-brand" href="#">E-Shop</a>
+
+        <div>
+            <form method="get" action="@Url.Action("Search", "Search")">
+                <label for="searchString">Search</label>
+                <input type="text" name="searchString" id="searchString" />
+                <button type="submit">Search!</button>
+            </form>
+        </div>
+        
         @Html.Action("Summary", "Cart")
     </nav>
         
