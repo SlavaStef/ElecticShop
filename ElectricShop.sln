@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectricShop.Data", "Electr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectricShop.Tests", "ElectricShop.Tests\ElectricShop.Tests.csproj", "{68F2D6F7-0414-4EF8-B2B5-1D7C0E702948}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectricShop.Identity", "ElectricShop.Identity\ElectricShop.Identity.csproj", "{A300B97B-1E50-4BE3-A624-5439E1F20BE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{68F2D6F7-0414-4EF8-B2B5-1D7C0E702948}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68F2D6F7-0414-4EF8-B2B5-1D7C0E702948}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68F2D6F7-0414-4EF8-B2B5-1D7C0E702948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A300B97B-1E50-4BE3-A624-5439E1F20BE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A300B97B-1E50-4BE3-A624-5439E1F20BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A300B97B-1E50-4BE3-A624-5439E1F20BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A300B97B-1E50-4BE3-A624-5439E1F20BE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
