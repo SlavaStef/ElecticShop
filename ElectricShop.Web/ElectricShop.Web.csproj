@@ -266,6 +266,7 @@
     <Content Include="Views\Navigation\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -323,6 +324,10 @@
     <ProjectReference Include="..\ElectricShop.Data\ElectricShop.Data.csproj">
       <Project>{c479408c-1084-4d63-8300-84aea977d037}</Project>
       <Name>ElectricShop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ElectricShop.Identity\ElectricShop.Identity.csproj">
+      <Project>{A300B97B-1E50-4BE3-A624-5439E1F20BE2}</Project>
+      <Name>ElectricShop.Identity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
