@@ -16,4 +16,13 @@ namespace ElectricShop.Identity.Models
         [Required]
         public string Password { get; set; }
     }
+
+    public class LoginModel
+    {
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public string Password { get; set; }
+    }
 }
