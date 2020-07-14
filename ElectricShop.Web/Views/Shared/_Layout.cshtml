@@ -23,8 +23,17 @@
                 <button type="submit">Search!</button>
             </form>
         </div>
-        
+
         @Html.Action("Summary", "Cart")
+
+        <div>
+            @Html.ActionLink("Sign in", "Login", "Account", null, new { @class = "btn btn-primary" })
+        </div>
+
+        <div>
+            @Html.ActionLink("Sign Out", "Logout", "Account", null, new { @class = "btn btn-primary" })
+        </div>
+        
     </nav>
         
         <div class="row panel">

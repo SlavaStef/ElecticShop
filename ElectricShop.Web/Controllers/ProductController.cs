@@ -18,7 +18,6 @@ namespace ElectricShop.Web.Controllers
             repository = productRepository;
         }
 
-        [Authorize]
         public ViewResult List(string category, int page = 1)
         {
             ProductsListViewModel model = new ProductsListViewModel

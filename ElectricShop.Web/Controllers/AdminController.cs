@@ -8,6 +8,8 @@ using System.Web.Mvc;
 
 namespace ElectricShop.Web.Controllers
 {
+
+    [Authorize(Roles = "Administrators")]
     public class AdminController : Controller
     {
         private AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } }
