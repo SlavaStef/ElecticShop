@@ -42,7 +42,7 @@ namespace ElectricShop.Web.Controllers
                     ClaimsIdentity ident = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                     AuthManager.SignOut();
                     AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, ident);
-                    return Redirect(returnUrl);
+                    return RedirectToAction("List", "Product");
                 }
             }
             ViewBag.returnUrl = returnUrl;
