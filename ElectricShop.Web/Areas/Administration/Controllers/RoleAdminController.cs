@@ -10,19 +10,17 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ElectricShop.Web.Controllers
+namespace ElectricShop.Web.Areas.Administration.Controllers
 {
 
-    [Authorize(Roles = "Administrators")]
+    //[Authorize(Roles = "Administrators")]
     public class RoleAdminController : Controller
     {
         public AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } }
         private AppRoleManager RoleManager { get { return HttpContext.GetOwinContext().GetUserManager<AppRoleManager>(); } }
 
-        // Show roles
         public ActionResult Index() => View(RoleManager.Roles);
 
-        // Create a role
         public ActionResult Create() => View();
 
         [HttpPost]
@@ -40,7 +38,6 @@ namespace ElectricShop.Web.Controllers
             return View(name);
         }
 
-        // Delete a role
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {
@@ -58,7 +55,6 @@ namespace ElectricShop.Web.Controllers
                 return View("Error", new string[] { "Role not found" });
         }
 
-        // Edit a role
         public async Task<ActionResult> Edit(string id)
         {
             AppRole role = await RoleManager.FindByIdAsync(id);

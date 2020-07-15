@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ElectricShop.Web.Controllers
+namespace ElectricShop.Web.Areas.Administration.Controllers
 {
-
-    [Authorize(Roles = "Administrators")]
+    //[Authorize(Roles = "Administrators")]
     public class AdminController : Controller
     {
         private AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } }

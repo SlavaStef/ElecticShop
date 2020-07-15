@@ -19,7 +19,6 @@ namespace ElectricShop.Web.Controllers
         private IAuthenticationManager AuthManager { get { return HttpContext.GetOwinContext().Authentication; } }
         private AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } }
 
-        [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             if (HttpContext.User.Identity.IsAuthenticated)
@@ -30,7 +29,6 @@ namespace ElectricShop.Web.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginModel details, string returnUrl)
         {
@@ -51,7 +49,6 @@ namespace ElectricShop.Web.Controllers
             return View(details);
         }
 
-        [Authorize]
         public ActionResult Logout()
         {
             AuthManager.SignOut();
