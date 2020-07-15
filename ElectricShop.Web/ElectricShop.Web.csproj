@@ -187,6 +187,9 @@
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Support\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_AdministrationLayout.cshtml" />
+    <Content Include="Areas\Administration\Views\ProductAdmin\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\ProductAdmin\Edit.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -273,6 +276,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\ProductAdminController.cs" />
     <Compile Include="Areas\Support\SupportAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Administration\Controllers\UserAdminController.cs" />
@@ -323,7 +327,6 @@
     <Content Include="Areas\Administration\Views\RoleAdmin\Index.cshtml" />
     <Content Include="Areas\Administration\Views\RoleAdmin\Create.cshtml" />
     <Content Include="Areas\Administration\Views\RoleAdmin\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\_LayoutAdministration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

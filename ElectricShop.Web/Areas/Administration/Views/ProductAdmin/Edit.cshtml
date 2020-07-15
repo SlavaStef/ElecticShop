@@ -1,0 +1,14 @@
+﻿@model ElectricShop.Data.Entities.Product
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h1>Edit @Model.Name</h1>
+
+@using(Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Save" class="btn btn-outline-primary"/>
+    @Html.ActionLink("Cancel and return to list", "Index")
+}
