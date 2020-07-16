@@ -190,6 +190,7 @@
     <Content Include="Areas\Administration\Views\Shared\_AdministrationLayout.cshtml" />
     <Content Include="Areas\Administration\Views\ProductAdmin\Index.cshtml" />
     <Content Include="Areas\Administration\Views\ProductAdmin\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\ProductAdmin\Create.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />

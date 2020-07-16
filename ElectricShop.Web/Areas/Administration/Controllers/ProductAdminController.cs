@@ -14,10 +14,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
             repository = repo;
         }
 
-        public ViewResult Index()
-        {
-            return View(repository.Products);
-        }
+        public ViewResult Index() => View(repository.Products);
 
         public ViewResult Edit(int productId)
         {
@@ -36,6 +33,18 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
             }
             else
                 return View(product);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Product product)
+        {
+            repository.SaveProduct(product);
+            return RedirectToAction("Index");
         }
     }
 }
