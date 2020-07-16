@@ -46,5 +46,13 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
             repository.SaveProduct(product);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult Delete(int productId)
+        {
+            repository.DeleteProduct(productId);
+
+            return RedirectToAction("Index");
+        }
     }
 }
