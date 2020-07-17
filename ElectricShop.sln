@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectricShop.Tests", "Elect
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectricShop.Identity", "ElectricShop.Identity\ElectricShop.Identity.csproj", "{A300B97B-1E50-4BE3-A624-5439E1F20BE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectricShop.Logic", "ElectricShop.Logic\ElectricShop.Logic.csproj", "{B17D8407-552F-4EB1-AAC9-439EDFD82131}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectricShop.Infrastructure", "ElectricShop.Infrastructure\ElectricShop.Infrastructure.csproj", "{7A15ADD8-66C9-4DF8-B9CB-AD8BBE7C52F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{A300B97B-1E50-4BE3-A624-5439E1F20BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A300B97B-1E50-4BE3-A624-5439E1F20BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A300B97B-1E50-4BE3-A624-5439E1F20BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B17D8407-552F-4EB1-AAC9-439EDFD82131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B17D8407-552F-4EB1-AAC9-439EDFD82131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B17D8407-552F-4EB1-AAC9-439EDFD82131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B17D8407-552F-4EB1-AAC9-439EDFD82131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A15ADD8-66C9-4DF8-B9CB-AD8BBE7C52F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A15ADD8-66C9-4DF8-B9CB-AD8BBE7C52F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A15ADD8-66C9-4DF8-B9CB-AD8BBE7C52F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A15ADD8-66C9-4DF8-B9CB-AD8BBE7C52F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
