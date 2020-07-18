@@ -1,5 +1,5 @@
 ﻿using ElectricShop.Data.Interfaces;
-using ElectricShop.Data.Entities;
+using ElectricShop.Data.Models;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,7 +18,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
 
         public ViewResult Edit(int productId)
         {
-            Product product = repository.Products.FirstOrDefault(p => p.ProductID == productId);
+            Product product = repository.Products.FirstOrDefault(p => p.Id == productId);
             return View(product);
         }
 

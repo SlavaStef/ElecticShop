@@ -1,5 +1,5 @@
 ﻿using ElectricShop.Data.Interfaces;
-using ElectricShop.Data.Entities;
+using ElectricShop.Data.Models;
 using ElectricShop.Web.Models;
 using System.Linq;
 using System.Web.Mvc;
@@ -24,7 +24,7 @@ namespace ElectricShop.Web.Controllers
 
         public RedirectToRouteResult AddToCart(Cart cart, int productId, string returnUrl)
         {
-            Product product = repository.Products.FirstOrDefault(p => p.ProductID == productId);
+            Product product = repository.Products.FirstOrDefault(p => p.Id == productId);
 
             if (product != null)
             {
@@ -35,7 +35,7 @@ namespace ElectricShop.Web.Controllers
 
         public RedirectToRouteResult RemoveFromCart(Cart cart, int productId, string returnUrl)
         {
-            Product product = repository.Products.FirstOrDefault(p => p.ProductID == productId);
+            Product product = repository.Products.FirstOrDefault(p => p.Id == productId);
 
             if (product != null)
             {
