@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.UI;
+﻿using System.Linq;
 using ElectricShop.Data.Interfaces;
 using ElectricShop.Data.Entities;
 using ElectricShop.Web.Controllers;

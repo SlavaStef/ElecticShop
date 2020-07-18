@@ -1,13 +1,9 @@
 ﻿using ElectricShop.Data;
 using ElectricShop.Data.Interfaces;
-using ElectricShop.Data.Entities;
-using Moq;
 using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ElectricShop.Web.Infrastructure
