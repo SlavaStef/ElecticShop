@@ -1,5 +1,5 @@
 ﻿using ElectricShop.Data;
-using ElectricShop.Data.Abstract;
+using ElectricShop.Data.Interfaces;
 using ElectricShop.Data.Entities;
 using Moq;
 using Ninject;

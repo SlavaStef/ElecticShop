@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
-using ElectricShop.Data.Abstract;
+using ElectricShop.Data.Interfaces;
 using ElectricShop.Data.Entities;
 using ElectricShop.Web.Controllers;
 using ElectricShop.Web.Models;

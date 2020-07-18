@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElectricShop.Data.Abstract
+namespace ElectricShop.Data.Interfaces
 {
     public interface IProductRepository
     {
