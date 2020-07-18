@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ElectricShop.Data.Entities
+namespace ElectricShop.Data.Models
 {
     public class Cart
     {
@@ -12,7 +12,7 @@ namespace ElectricShop.Data.Entities
 
         public void AddItem(Product product, int quantity)
         {
-            CartLine line = lineCollection.Where(p => p.Product.ProductID == product.ProductID).FirstOrDefault();
+            CartLine line = lineCollection.Where(p => p.Product.Id == product.Id).FirstOrDefault();
 
             if (line == null)
             {
@@ -26,7 +26,7 @@ namespace ElectricShop.Data.Entities
 
         public void RemoveLine(Product product)
         {
-            lineCollection.RemoveAll(l => l.Product.ProductID == product.ProductID);
+            lineCollection.RemoveAll(l => l.Product.Id == product.Id);
         }
 
         public decimal ComputeTotalValue()

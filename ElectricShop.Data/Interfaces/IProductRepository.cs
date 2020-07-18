@@ -1,4 +1,4 @@
-﻿using ElectricShop.Data.Entities;
+﻿using ElectricShop.Data.Models;
 using System.Collections.Generic;
 
 namespace ElectricShop.Data.Interfaces
