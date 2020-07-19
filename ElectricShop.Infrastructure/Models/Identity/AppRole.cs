@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace ElectricShop.Identity.Models
+namespace ElectricShop.Infrastructure.Models.Identity
 {
     public class AppRole : IdentityRole
     {

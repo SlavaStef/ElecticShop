@@ -103,20 +103,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\AppIdentityDbContext.cs" />
-    <Compile Include="Infrastructure\AppRoleManager.cs" />
-    <Compile Include="Infrastructure\AppUserManager.cs" />
-    <Compile Include="Infrastructure\CustomPasswordValidator.cs" />
-    <Compile Include="Infrastructure\CustomUserValidator.cs" />
-    <Compile Include="Infrastructure\IdentityHelper.cs" />
-    <Compile Include="Models\AppRole.cs" />
-    <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\AppUserModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

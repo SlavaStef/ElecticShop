@@ -1,10 +1,9 @@
-﻿using ElectricShop.Identity.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-namespace ElectricShop.Identity.Infrastructure
+namespace ElectricShop.Infrastructure.Models.Identity
 {
     public class AppUserManager : UserManager<AppUser>
     {
@@ -13,7 +12,7 @@ namespace ElectricShop.Identity.Infrastructure
         // Called when Identity needs an instance of AppUserMAnager
         public static AppUserManager Create(IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
         {
-            AppIdentityDbContext db = context.Get<AppIdentityDbContext>();
+            IdentityContext db = context.Get<AppIdentityDbContext>();
             AppUserManager manager = new AppUserManager(new UserStore<AppUser>(db));
 
             manager.PasswordValidator = new CustomPasswordValidator

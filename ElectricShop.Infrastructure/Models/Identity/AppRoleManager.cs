@@ -1,11 +1,10 @@
-﻿using ElectricShop.Identity.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using System;
 
-namespace ElectricShop.Identity.Infrastructure
+namespace ElectricShop.Infrastructure.Models.Identity
 {
     public class AppRoleManager : RoleManager<AppRole> , IDisposable
     {

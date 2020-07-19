@@ -1,26 +1,26 @@
-﻿using ElectricShop.Identity.Models;
+﻿using ElectricShop.Infrastructure.Models.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
-namespace ElectricShop.Identity.Infrastructure
+namespace ElectricShop.Data.Context
 {
-    public class AppIdentityDbContext : IdentityDbContext<AppUser>
+    public class IdentityContext : IdentityDbContext<AppUser>
     {
-        public AppIdentityDbContext() : base("IdentityDb") { }
+        public IdentityContext() : base("IdentityDb") { }
 
-        public static AppIdentityDbContext Create() => new AppIdentityDbContext();
+        public static IdentityContext Create() => new IdentityContext();
     }
 
-    public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
+    public class IdentityDbInit : DropCreateDatabaseIfModelChanges<IdentityContext>
     {
-        protected override void Seed(AppIdentityDbContext context)
+        protected override void Seed(IdentityContext context)
         {
             PerformIntialSetup(context);
             base.Seed(context);
         }
 
-        public void PerformIntialSetup(AppIdentityDbContext context)
+        public void PerformIntialSetup(IdentityContext context)
         {
             AppUserManager userMgr = new AppUserManager(new UserStore<AppUser>(context));
             AppRoleManager roleMgr = new AppRoleManager(new RoleStore<AppRole>(context));

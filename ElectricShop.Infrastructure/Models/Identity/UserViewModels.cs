@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ElectricShop.Identity.Models
+namespace ElectricShop.Infrastructure.Models.Identity
 {
     public class CreateModel
     {

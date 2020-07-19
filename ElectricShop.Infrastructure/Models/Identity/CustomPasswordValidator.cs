@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ElectricShop.Identity.Infrastructure
+namespace ElectricShop.Infrastructure.Models.Identity
 {
     class CustomPasswordValidator : PasswordValidator
     {

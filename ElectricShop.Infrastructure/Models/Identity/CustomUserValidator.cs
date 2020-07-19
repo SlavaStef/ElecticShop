@@ -1,9 +1,8 @@
-﻿using ElectricShop.Identity.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ElectricShop.Identity.Infrastructure
+namespace ElectricShop.Infrastructure.Models.Identity
 {
     public class CustomUserValidator : UserValidator<AppUser>
     {

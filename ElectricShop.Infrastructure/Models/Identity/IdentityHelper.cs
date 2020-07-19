@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
 
-namespace ElectricShop.Identity.Infrastructure
+namespace ElectricShop.Infrastructure.Models.Identity
 {
     public static class IdentityHelpers
     {
