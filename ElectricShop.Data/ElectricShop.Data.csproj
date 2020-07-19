@@ -74,16 +74,10 @@
   <ItemGroup>
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Models\ProductBrand.cs" />
-    <Compile Include="Models\ProductCategory.cs" />
-    <Compile Include="Models\ProductSubCategory.cs" />
     <Compile Include="Interfaces\IOrderProcessor.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Context\ApplicationContext.cs" />
     <Compile Include="EmailOrderProcessor.cs" />
-    <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ShippingDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ProductBrandRepository.cs" />
     <Compile Include="Repositories\ProductCategoryRepository.cs" />
@@ -96,7 +90,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ElectricShop.Infrastructure\ElectricShop.Infrastructure.csproj">
+      <Project>{7a15add8-66c9-4df8-b9cb-ad8bbe7c52f7}</Project>
+      <Name>ElectricShop.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

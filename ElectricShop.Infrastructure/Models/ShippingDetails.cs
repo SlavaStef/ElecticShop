@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ElectricShop.Data.Models
+namespace ElectricShop.Infrastructure.Models
 {
     public class ShippingDetails
     {

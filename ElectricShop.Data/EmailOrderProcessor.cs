@@ -1,5 +1,5 @@
 ﻿using ElectricShop.Data.Interfaces;
-using ElectricShop.Data.Models;
+using ElectricShop.Infrastructure.Models;
 using System.Net;
 using System.Net.Mail;
 using System.Text;

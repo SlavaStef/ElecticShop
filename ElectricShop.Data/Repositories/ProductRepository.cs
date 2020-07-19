@@ -1,4 +1,4 @@
-﻿using ElectricShop.Data.Models;
+﻿using ElectricShop.Infrastructure.Models;
 
 namespace ElectricShop.Data.Repositories
 {

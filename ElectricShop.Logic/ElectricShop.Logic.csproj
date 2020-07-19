@@ -43,5 +43,15 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElectricShop.Data\ElectricShop.Data.csproj">
+      <Project>{c479408c-1084-4d63-8300-84aea977d037}</Project>
+      <Name>ElectricShop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ElectricShop.Infrastructure\ElectricShop.Infrastructure.csproj">
+      <Project>{7a15add8-66c9-4df8-b9cb-ad8bbe7c52f7}</Project>
+      <Name>ElectricShop.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
