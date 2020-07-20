@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ElectricShop.Infrastructure.Models
+namespace ElectricShop.Common.Models
 {
     public class ProductSubCategory
     {

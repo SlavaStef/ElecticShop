@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ElectricShop.Infrastructure.Models
+namespace ElectricShop.Common.Models
 {
     public class Cart
     {

@@ -336,9 +336,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ElectricShop.Infrastructure\ElectricShop.Infrastructure.csproj">
+    <ProjectReference Include="..\ElectricShop.Infrastructure\ElectricShop.Common.csproj">
       <Project>{7a15add8-66c9-4df8-b9cb-ad8bbe7c52f7}</Project>
-      <Name>ElectricShop.Infrastructure</Name>
+      <Name>ElectricShop.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\ElectricShop.Logic\ElectricShop.Logic.csproj">
       <Project>{b17d8407-552f-4eb1-aac9-439edfd82131}</Project>
