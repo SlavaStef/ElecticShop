@@ -12,5 +12,7 @@ namespace ElectricShop.Data.Interfaces
 
         void DisableAutoDetectChanges();
         Task<int> CompleteAsync();
+
+        void Dispose();
     }
 }
