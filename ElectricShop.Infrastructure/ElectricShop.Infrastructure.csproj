@@ -97,14 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\Identity\AppRole.cs" />
-    <Compile Include="Models\Identity\AppRoleManager.cs" />
-    <Compile Include="Models\Identity\AppUserManager.cs" />
-    <Compile Include="Models\Identity\AppUser.cs" />
-    <Compile Include="Models\Identity\CustomPasswordValidator.cs" />
-    <Compile Include="Models\Identity\CustomUserValidator.cs" />
-    <Compile Include="Models\Identity\IdentityHelper.cs" />
-    <Compile Include="Models\Identity\UserViewModels.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductBrand.cs" />
     <Compile Include="Models\ProductCategory.cs" />

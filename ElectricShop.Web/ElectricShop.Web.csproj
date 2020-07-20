@@ -186,8 +186,6 @@
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Support\Views\web.config" />
-    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\_AdministrationLayout.cshtml" />
     <Content Include="Areas\Administration\Views\ProductAdmin\Index.cshtml" />
     <Content Include="Areas\Administration\Views\ProductAdmin\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\ProductAdmin\Create.cshtml" />
@@ -273,18 +271,14 @@
     <Content Include="Views\Shared\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\ProductAdminController.cs" />
     <Compile Include="Areas\Support\SupportAreaRegistration.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Areas\Administration\Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Areas\Administration\Controllers\RoleAdminController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -320,14 +314,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Areas\Administration\Views\UserAdmin\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\UserAdmin\Create.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Areas\Administration\Views\UserAdmin\Edit.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Areas\Administration\Views\RoleAdmin\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\RoleAdmin\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\RoleAdmin\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -338,6 +326,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Data\" />
+    <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Support\Controllers\" />
     <Folder Include="Areas\Support\Data\" />
     <Folder Include="Areas\Support\Views\Shared\" />
