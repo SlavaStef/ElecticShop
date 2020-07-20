@@ -1,4 +1,5 @@
-﻿using ElectricShop.Data.Interfaces;
+﻿using ElectricShop.Data.Context;
+using ElectricShop.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

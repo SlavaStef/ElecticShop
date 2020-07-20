@@ -1,4 +1,5 @@
 ﻿using ElectricShop.Common.Models;
+using ElectricShop.Data.Context;
 
 namespace ElectricShop.Data.Repositories
 {
