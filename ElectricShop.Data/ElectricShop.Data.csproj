@@ -95,7 +95,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ElectricShop.Infrastructure\ElectricShop.Common.csproj">
+    <ProjectReference Include="..\ElectricShop.Common\ElectricShop.Common.csproj">
       <Project>{7a15add8-66c9-4df8-b9cb-ad8bbe7c52f7}</Project>
       <Name>ElectricShop.Common</Name>
     </ProjectReference>
