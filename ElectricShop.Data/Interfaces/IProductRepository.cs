@@ -1,4 +1,4 @@
-﻿using ElectricShop.Infrastructure.Models;
+﻿using ElectricShop.Common.Models;
 using System.Collections.Generic;
 
 namespace ElectricShop.Data.Interfaces

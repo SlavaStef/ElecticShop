@@ -1,5 +1,4 @@
-﻿using ElectricShop.Data.Context;
-using ElectricShop.Data.Interfaces;
+﻿using ElectricShop.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,13 +10,11 @@ namespace ElectricShop.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly ApplicationContext _applicationContext;
-        protected readonly IdentityContext _identityContext;
-
-        public Repository(ApplicationContext applicationContext, IdentityContext identityContext)
+        protected readonly ApplicationContext _context;
+        
+        public Repository(ApplicationContext context)
         {
-            _applicationContext = applicationContext;
-            _identityContext = identityContext;
+            _context = context;
         }
 
         public async Task<TEntity> GetAsync(int id)

@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("ElectricShop.Tests")]
@@ -12,7 +13,7 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
 
-[assembly: Guid("68f2d6f7-0414-4ef8-b2b5-1d7c0e702948")]
+[assembly: Guid("0b4d27d4-e22a-496f-851a-bb7d4d43a53a")]
 
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
