@@ -9,7 +9,6 @@ namespace ElectricShop.Data.Context
         {
             Database.SetInitializer<ApplicationContext>(new ApplicationDbInitializer());
         }
-        public ApplicationContext(string connectionString) : base(connectionString) { }
         
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductBrand> ProductBrands { get; set; }
