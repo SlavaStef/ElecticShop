@@ -17,22 +17,19 @@ namespace ElectricShop.Logic.Services
         }
 
         public ProductDTO GetProduct(int id)
-        {            
-            Product product = _context.Products.GetAsync(id).Result;
-            
-            return new ProductDTO { 
-                Id = product.Id, 
-                Description = product.Description, 
-                Name = product.Name,
-                Price = product.Price };
+        {
+            IMapper mapper = new MapperConfiguration(cfg => { cfg.CreateMap<Product, ProductDTO>(); cfg.CreateMap<ProductBrand, ProductBrandDTO>(); }).CreateMapper();
+            ProductDTO product = mapper.Map<ProductDTO>(_context.Products.GetAsync(id).Result);
+
+            return product;
         }
 
         public IEnumerable<ProductDTO> GetAllProducts()
         {
             IMapper mapper = new MapperConfiguration(cfg => { cfg.CreateMap<Product, ProductDTO>(); cfg.CreateMap<ProductBrand, ProductBrandDTO>(); }).CreateMapper();
-            IEnumerable<ProductDTO> result = mapper.Map< IEnumerable<Product>, IEnumerable <ProductDTO>>(_context.Products.GetAll());
+            IEnumerable<ProductDTO> products = mapper.Map<IEnumerable<Product>, IEnumerable <ProductDTO>>(_context.Products.GetAll());
                                     
-            return result;
+            return products;
         }
 
         public void Dispose()

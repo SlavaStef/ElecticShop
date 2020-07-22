@@ -21,8 +21,8 @@ namespace ElectricShop.Common.Models
         public decimal Price { get; set; }
 
         [Required(ErrorMessage = "Please specify a category")]
-        public ProductCategory Category { get; set; }
+        public virtual ProductCategory Category { get; set; }
 
-        public ProductSubCategory SubCategory { get; set; }
+        public virtual ProductSubCategory SubCategory { get; set; }
     }
 }

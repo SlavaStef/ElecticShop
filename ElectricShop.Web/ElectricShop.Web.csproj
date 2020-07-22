@@ -266,6 +266,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdminProductController.cs" />
     <Compile Include="Areas\Support\SupportAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -301,8 +302,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Controllers\" />
     <Folder Include="Areas\Administration\Data\" />
+    <Folder Include="Areas\Administration\Views\AdminProduct\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Support\Controllers\" />
     <Folder Include="Areas\Support\Data\" />
