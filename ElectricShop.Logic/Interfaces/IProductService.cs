@@ -6,9 +6,11 @@ namespace ElectricShop.Logic.Interfaces
 {
     public interface IProductService
     {
+        Task AddProductAsync(ProductDTO product);
         ProductDTO GetProduct(int id);
         IEnumerable<ProductDTO> GetAllProducts();
-        Task AddProductAsync(ProductDTO product);
+        void EditProduct(ProductDTO product);
+        Task RemoveProductAsync(ProductDTO product);
         Task RemoveProductAsync(int id);
         void Dispose();
     }

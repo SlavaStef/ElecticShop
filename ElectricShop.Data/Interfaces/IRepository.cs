@@ -10,7 +10,7 @@ namespace ElectricShop.Data.Interfaces
     public interface IRepository<TEntity> where TEntity : class
     {
         Task<TEntity> GetAsync(int id);
-        IEnumerable<TEntity> GetAll();
+        Task<IEnumerable<TEntity>> GetAllAsync();
         Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate);
 
         Task AddAsync(TEntity entity);

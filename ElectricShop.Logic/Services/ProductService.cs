@@ -17,9 +17,14 @@ namespace ElectricShop.Logic.Services
             _context = context;
         }
 
+
         public async Task AddProductAsync(ProductDTO product)
         {
-            IMapper mapper = new MapperConfiguration(cfg => { cfg.CreateMap<ProductDTO, Product>(); cfg.CreateMap<ProductBrandDTO, ProductBrand>(); }).CreateMapper();
+            IMapper mapper = new MapperConfiguration(cfg => {
+                cfg.CreateMap<ProductDTO, Product>();
+                cfg.CreateMap<ProductBrandDTO, ProductBrand>();
+            }).CreateMapper();
+
             Product _product = mapper.Map<Product>(product);
             await _context.Products.AddAsync(_product);
         }
@@ -34,10 +39,32 @@ namespace ElectricShop.Logic.Services
 
         public IEnumerable<ProductDTO> GetAllProducts()
         {
-            IMapper mapper = new MapperConfiguration(cfg => { cfg.CreateMap<Product, ProductDTO>(); cfg.CreateMap<ProductBrand, ProductBrandDTO>(); }).CreateMapper();
-            IEnumerable<ProductDTO> products = mapper.Map<IEnumerable<Product>, IEnumerable <ProductDTO>>(_context.Products.GetAll());
+            IMapper mapper = new MapperConfiguration(cfg => { 
+                cfg.CreateMap<Product, ProductDTO>(); 
+                cfg.CreateMap<ProductBrand, ProductBrandDTO>(); 
+            }).CreateMapper();
+            
+            IEnumerable<ProductDTO> products = mapper.Map<IEnumerable<Product>, IEnumerable <ProductDTO>>(_context.Products.GetAllAsync().Result);
                                     
             return products;
+        }
+
+        public void EditProduct(ProductDTO product)
+        {
+            RemoveProductAsync(product.Id);
+            AddProductAsync(product);
+        }
+
+        public async Task RemoveProductAsync(ProductDTO product)
+        {
+            IMapper mapper = new MapperConfiguration(cfg => { 
+                cfg.CreateMap<ProductDTO, Product>(); 
+                cfg.CreateMap<ProductBrandDTO, ProductBrand>(); 
+            }).CreateMapper();
+
+            Product _product = mapper.Map<Product>(product);
+
+            await _context.Products.RemoveAsync(_product);
         }
 
         public async Task RemoveProductAsync(int id)

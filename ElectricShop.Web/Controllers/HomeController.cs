@@ -21,8 +21,7 @@ namespace ElectricShop.Web.Controllers
         }
         public ActionResult ShowAllProducts()
         {
-            IEnumerable<ProductDTO> products = _service.GetAllProducts();
-            return View(products);
+            return View(_service.GetAllProducts());
         }
     }
 }

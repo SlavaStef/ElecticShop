@@ -14,6 +14,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
             _service = service;
         }
 
+
         public ActionResult Index()
         {
             IEnumerable<ProductDTO> products = _service.GetAllProducts();
@@ -22,8 +23,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
 
         public ActionResult Edit(int productId)
         {
-            ProductDTO product = _service.GetProduct(productId);
-            return View(product);
+            return View(_service.GetProduct(productId));
         }
 
         [HttpPost]
@@ -31,8 +31,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.RemoveProductAsync(product.Id);
-                _service.AddProductAsync(product);
+                _service.EditProduct(product);
 
                 return RedirectToAction("Index");
             }
