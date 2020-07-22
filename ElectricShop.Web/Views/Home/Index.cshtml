@@ -1,7 +1,17 @@
-﻿
+﻿@model IEnumerable<ElectricShop.Common.DTO.ProductDTO>
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
+@foreach (var item in Model)
+{
+    <h4>Brand: @item.Brand</h4>
+    <h4>Category: @item.Category</h4>
+    <h4>Description: @item.Description</h4>
+    <h4>Name: @item.Name</h4>
+    <h4>Price: @item.Price</h4>
+    <h4>SubCategory: @item.SubCategory</h4>
+}

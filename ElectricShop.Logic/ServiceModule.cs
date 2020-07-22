@@ -1,20 +1,17 @@
 ﻿using ElectricShop.Data.Interfaces;
+using ElectricShop.Data.Repositories;
+using ElectricShop.Logic.Interfaces;
+using ElectricShop.Logic.Services;
 using Ninject.Modules;
 
 namespace ElectricShop.Logic
 {
     public class ServiceModule : NinjectModule
     {
-        private string connectionString;
-
-        public ServiceModule(string connection)
-        {
-            connectionString = connection;
-        }
-
         public override void Load()
         {
-            Bind<IUnitOfWork>().To<IUnitOfWork>().WithConstructorArgument(connectionString);
+            Bind<IUnitOfWork>().To<UnitOfWork>();
+            Bind<IProductService>().To<ProductService>();
         }
     }
 }
