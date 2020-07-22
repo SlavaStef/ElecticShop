@@ -23,9 +23,9 @@ namespace ElectricShop.Data.Repositories
             return await _context.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public IEnumerable<TEntity> GetAll()
         {
-            return await _context.Set<TEntity>().ToListAsync();
+            return _context.Set<TEntity>().ToList();
         }
 
         public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)

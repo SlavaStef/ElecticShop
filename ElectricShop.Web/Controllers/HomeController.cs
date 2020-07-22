@@ -16,6 +16,10 @@ namespace ElectricShop.Web.Controllers
         }
 
         public ActionResult Index()
+        {            
+            return View();
+        }
+        public ActionResult ShowAllProducts()
         {
             IEnumerable<ProductDTO> products = _service.GetAllProducts();
             return View(products);

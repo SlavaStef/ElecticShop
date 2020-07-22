@@ -22,18 +22,17 @@ namespace ElectricShop.Logic.Services
             
             return new ProductDTO { 
                 Id = product.Id, 
-                Brand = product.Brand, 
-                Category = product.Category, 
-                SubCategory = product.SubCategory, 
                 Description = product.Description, 
-                Name = product.Name, 
+                Name = product.Name,
                 Price = product.Price };
         }
 
         public IEnumerable<ProductDTO> GetAllProducts()
         {
             IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<Product>, List<ProductDTO>>(_context.Products.GetAllAsync().Result);
+            IEnumerable<ProductDTO> result = mapper.Map<IEnumerable<ProductDTO>>(_context.Products.GetAll());
+                                    
+            return result;
         }
 
         public void Dispose()
