@@ -37,14 +37,16 @@ namespace ElectricShop.Logic.Services
             return product;
         }
 
-        public IEnumerable<ProductDTO> GetAllProducts()
+        public async Task<IEnumerable<ProductDTO>> GetAllProducts()
         {
             IMapper mapper = new MapperConfiguration(cfg => { 
                 cfg.CreateMap<Product, ProductDTO>(); 
                 cfg.CreateMap<ProductBrand, ProductBrandDTO>(); 
             }).CreateMapper();
-            
-            IEnumerable<ProductDTO> products = mapper.Map<IEnumerable<Product>, IEnumerable <ProductDTO>>(_context.Products.GetAllAsync().Result);
+
+            var result = await _context.Products.GetAllAsync();
+
+            IEnumerable<ProductDTO> products = mapper.Map<IEnumerable <ProductDTO>>(result);
                                     
             return products;
         }

@@ -2,6 +2,7 @@
 using ElectricShop.Logic.Interfaces;
 using ElectricShop.Logic.Services;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ElectricShop.Web.Controllers
@@ -17,11 +18,11 @@ namespace ElectricShop.Web.Controllers
 
         public ActionResult Index()
         {            
-            return View();
+            return null;
         }
-        public ActionResult ShowAllProducts()
-        {
-            return View(_service.GetAllProducts());
+        public async Task<ActionResult> ShowAllProducts()
+        {            
+            return View(await _service.GetAllProducts());
         }
     }
 }

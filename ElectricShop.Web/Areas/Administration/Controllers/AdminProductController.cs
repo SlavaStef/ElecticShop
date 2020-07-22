@@ -17,8 +17,9 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
 
         public ActionResult Index()
         {
-            IEnumerable<ProductDTO> products = _service.GetAllProducts();
-            return View(products);
+            //IEnumerable<ProductDTO> products = _service.GetAllProducts();
+            //return View(products);
+            return null;
         }
 
         public ActionResult Edit(int productId)
