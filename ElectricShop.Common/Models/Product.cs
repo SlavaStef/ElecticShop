@@ -8,7 +8,7 @@ namespace ElectricShop.Common.Models
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
-        public ProductBrand Brand { get; set; }
+        public virtual ProductBrand Brand { get; set; }
 
         [Required(ErrorMessage = "Please enter a product name")]
         public string Name { get; set; }

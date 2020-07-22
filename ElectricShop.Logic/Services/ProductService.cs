@@ -29,8 +29,8 @@ namespace ElectricShop.Logic.Services
 
         public IEnumerable<ProductDTO> GetAllProducts()
         {
-            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>()).CreateMapper();
-            IEnumerable<ProductDTO> result = mapper.Map<IEnumerable<ProductDTO>>(_context.Products.GetAll());
+            IMapper mapper = new MapperConfiguration(cfg => { cfg.CreateMap<Product, ProductDTO>(); cfg.CreateMap<ProductBrand, ProductBrandDTO>(); }).CreateMapper();
+            IEnumerable<ProductDTO> result = mapper.Map< IEnumerable<Product>, IEnumerable <ProductDTO>>(_context.Products.GetAll());
                                     
             return result;
         }

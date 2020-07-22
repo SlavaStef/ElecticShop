@@ -12,7 +12,7 @@ namespace ElectricShop.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "ShoAllProducts", id = UrlParameter.Optional });
+                defaults: new { controller = "Home", action = "ShowAllProducts", id = UrlParameter.Optional });
         }
     }
 }
