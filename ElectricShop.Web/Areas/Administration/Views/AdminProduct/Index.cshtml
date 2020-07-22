@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products (admin)</h2>
+
+<div class="container-fluid no-gutters">
+    @foreach (var product in Model)
+    {
+        <div class="row">
+            <div class="col">
+                <div class="container-fluid no-gutters">
+                    <div class="row">
+                        <div class="col-10">
+                            <h4>@product.Brand.Name @product.Name</h4>
+                        </div>
+                        <div class="col-2">
+                            <h4><span class="pull-right label label-primary">@product.Price.ToString("c")</span></h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                            <span class="lead">@product.Description</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

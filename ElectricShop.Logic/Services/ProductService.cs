@@ -4,6 +4,7 @@ using ElectricShop.Common.Models;
 using ElectricShop.Data.Interfaces;
 using ElectricShop.Logic.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ElectricShop.Logic.Services
 {
@@ -14,6 +15,13 @@ namespace ElectricShop.Logic.Services
         public ProductService(IUnitOfWork context)
         {
             _context = context;
+        }
+
+        public async Task AddProductAsync(ProductDTO product)
+        {
+            IMapper mapper = new MapperConfiguration(cfg => { cfg.CreateMap<ProductDTO, Product>(); cfg.CreateMap<ProductBrandDTO, ProductBrand>(); }).CreateMapper();
+            Product _product = mapper.Map<Product>(product);
+            await _context.Products.AddAsync(_product);
         }
 
         public ProductDTO GetProduct(int id)
@@ -30,6 +38,11 @@ namespace ElectricShop.Logic.Services
             IEnumerable<ProductDTO> products = mapper.Map<IEnumerable<Product>, IEnumerable <ProductDTO>>(_context.Products.GetAll());
                                     
             return products;
+        }
+
+        public async Task RemoveProductAsync(int id)
+        {
+            await _context.Products.RemoveAsync(id);
         }
 
         public void Dispose()
