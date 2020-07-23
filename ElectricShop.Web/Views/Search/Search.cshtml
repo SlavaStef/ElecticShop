@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ElectricShop.Common.DTO.ProductDTO>
-
 @{
-    ViewBag.Title = "ShowAllProducts";
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Products</h2>
+<h2>Search</h2>
 
 <div class="container-fluid no-gutters">
     @foreach (var product in Model)
@@ -29,4 +29,8 @@
             </div>
         </div>
     }
+</div>
+
+<div>
+    @Html.ActionLink("Back to all Products", "Index", "Home", new { }, new { @class="btn btn-primary"} )
 </div>

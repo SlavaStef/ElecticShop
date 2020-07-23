@@ -12,6 +12,7 @@ namespace ElectricShop.Logic.Interfaces
         Task EditProductAsync(ProductDTO product);
         Task RemoveProductAsync(ProductDTO product);
         Task RemoveProductAsync(int id);
+        Task<IEnumerable<ProductDTO>> FindProductsAsync(string searchString);
         void Dispose();
     }
 }

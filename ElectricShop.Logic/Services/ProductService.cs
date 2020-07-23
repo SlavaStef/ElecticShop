@@ -3,6 +3,7 @@ using ElectricShop.Common.DTO;
 using ElectricShop.Common.Models;
 using ElectricShop.Data.Interfaces;
 using ElectricShop.Logic.Interfaces;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -88,6 +89,23 @@ namespace ElectricShop.Logic.Services
         public async Task RemoveProductAsync(int id)
         {
             await _context.Products.RemoveAsync(id);
+        }
+
+        public async Task<IEnumerable<ProductDTO>> FindProductsAsync(string searchString)
+        {
+            IEnumerable<Product> searchResult = await _context.Products.FindAsync(product => 
+                product.Name.Contains(searchString) | 
+                product.Brand.Name.Contains(searchString) | 
+                product.Description.Contains(searchString));
+
+            IMapper mapper = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Product, ProductDTO>();
+                cfg.CreateMap<ProductBrand, ProductBrandDTO>();
+                cfg.CreateMap<ProductCategory, ProductCategoryDTO>();
+                cfg.CreateMap<ProductSubCategory, ProductSubCategoryDTO>();
+            }).CreateMapper();
+
+            return mapper.Map<IEnumerable<ProductDTO>>(searchResult);
         }
 
         public void Dispose()
