@@ -1,0 +1,43 @@
+﻿@model ElectricShop.Common.DTO.ProductDTO
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create new product</h1>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(model => model.Brand.Name)
+        <p>@Html.EditorFor(model => model.Brand.Name)</p>
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Name)
+        <p>@Html.EditorFor(model => model.Name)</p>
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Description)
+        <p>@Html.EditorFor(model => model.Description)</p>
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Category.Name)
+        <p>@Html.EditorFor(model => model.Category.Name)</p>
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.SubCategory.Name)
+        <p>@Html.EditorFor(model => model.SubCategory.Name)</p>
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Price)
+        <p>@Html.EditorFor(model => model.Price)</p>
+    </div>
+    <p><input type="submit" value="Create" /></p>
+    @Html.ActionLink("Cancel and return to list", "Index")
+}

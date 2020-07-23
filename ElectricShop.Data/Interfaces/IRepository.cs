@@ -21,5 +21,6 @@ namespace ElectricShop.Data.Interfaces
         Task RemoveRangeAsync(IEnumerable<TEntity> entities);
 
         Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate);
+        Task SaveChangesAsync();
     }
 }

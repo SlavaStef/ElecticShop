@@ -1,43 +1,83 @@
 ﻿using ElectricShop.Common.DTO;
 using ElectricShop.Logic.Interfaces;
 using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ElectricShop.Web.Areas.Administration.Controllers
 {
     public class AdminProductController : Controller
     {
-        public IProductService _service { get; set; }
+        public IProductService service { get; set; }
 
         public AdminProductController(IProductService service)
         {
-            _service = service;
+            this.service = service;
         }
 
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            //IEnumerable<ProductDTO> products = _service.GetAllProducts();
-            //return View(products);
-            return null;
+            return View(await service.GetAllProductsAsync());
         }
 
-        public ActionResult Edit(int productId)
+        public ActionResult Create()
         {
-            return View(_service.GetProduct(productId));
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Edit(ProductDTO product)
+        public async Task<ActionResult> Create(ProductDTO product)
+        {
+            if(ModelState.IsValid)
+            {
+                await service.AddProductAsync(product);
+                return RedirectToAction("Index");
+            }
+            return View(product);
+        }
+
+        public async Task<ActionResult> Edit(int? productId)
+        {
+            if(productId == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            ProductDTO product = await service.GetProductAsync((int)productId);
+
+            if (product == null)
+                return HttpNotFound();
+
+            return View(product);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(ProductDTO product)
         {
             if (ModelState.IsValid)
             {
-                _service.EditProduct(product);
+                await service.EditProductAsync(product);
 
                 return RedirectToAction("Index");
             }
             else
                 return View(product);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(int? productId)
+        {
+            if (productId == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            ProductDTO product = await service.GetProductAsync((int)productId);
+
+            if (product == null)
+                return HttpNotFound();
+
+            await service.RemoveProductAsync(product);
+            
+            return RedirectToAction("Index");
         }
     }
 }

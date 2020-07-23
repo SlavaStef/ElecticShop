@@ -9,20 +9,17 @@ namespace ElectricShop.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IProductService _service { get; set; }
+        public IProductService service { get; set; }
 
         public HomeController(IProductService service)
         {
-            _service = service;
+            this.service = service;
         }
 
-        public ActionResult Index()
+
+        public async Task<ActionResult> Index()
         {            
-            return null;
-        }
-        public async Task<ActionResult> ShowAllProducts()
-        {            
-            return View(await _service.GetAllProducts());
+            return View(await service.GetAllProductsAsync());
         }
     }
 }

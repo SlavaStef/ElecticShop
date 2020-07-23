@@ -63,5 +63,10 @@ namespace ElectricShop.Data.Repositories
         {
             return await _context.Set<TEntity>().AnyAsync(predicate);
         }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }
