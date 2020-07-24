@@ -272,6 +272,7 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminProductController.cs" />
     <Compile Include="Areas\Support\SupportAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -312,6 +313,7 @@
     <Folder Include="Areas\Support\Controllers\" />
     <Folder Include="Areas\Support\Data\" />
     <Folder Include="Areas\Support\Views\Shared\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
