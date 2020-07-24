@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
-
-namespace ElectricShop.Common.Models
+﻿namespace ElectricShop.Common.Models
 {
     public class Product
     {

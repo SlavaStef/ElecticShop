@@ -1,7 +1,4 @@
-﻿using ElectricShop.Common.DTO;
-using ElectricShop.Logic.Interfaces;
-using ElectricShop.Logic.Services;
-using System.Collections.Generic;
+﻿using ElectricShop.Logic.Interfaces;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 

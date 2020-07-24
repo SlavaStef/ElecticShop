@@ -1,6 +1,5 @@
 ﻿using ElectricShop.Common.DTO;
 using ElectricShop.Logic.Interfaces;
-using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;

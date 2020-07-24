@@ -3,7 +3,6 @@ using ElectricShop.Common.DTO;
 using ElectricShop.Common.Models;
 using ElectricShop.Data.Interfaces;
 using ElectricShop.Logic.Interfaces;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

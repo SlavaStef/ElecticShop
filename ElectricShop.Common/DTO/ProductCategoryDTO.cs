@@ -1,5 +1,4 @@
 ﻿using ElectricShop.Common.Models;
-using System;
 using System.Collections.Generic;
 
 namespace ElectricShop.Common.DTO

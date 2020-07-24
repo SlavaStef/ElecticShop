@@ -7,12 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ElectricShop.Logic.Services
 {
-    public class UserService : IUserService, IDisposable
+    public class UserService : IUserService
     {
         IUnitOfWork _context { get; set; }
 
@@ -71,7 +70,7 @@ namespace ElectricShop.Logic.Services
 
         public void Dispose()
         {
-            _context.Dispose();
+            //_context.Dispose();
         }
     }
 }
