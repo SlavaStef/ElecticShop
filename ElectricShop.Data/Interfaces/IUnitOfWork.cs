@@ -1,4 +1,5 @@
-﻿using ElectricShop.Data.Repositories;
+﻿using ElectricShop.Common.Models;
+using ElectricShop.Data.Repositories;
 using System.Threading.Tasks;
 
 namespace ElectricShop.Data.Interfaces
@@ -9,6 +10,9 @@ namespace ElectricShop.Data.Interfaces
         ProductCategoryRepository ProductCategories { get; }
         ProductRepository Products { get; }
         ProductSubCategoryRepository ProductSubCategories { get; }
+
+        AppUserManager UserManager { get; }
+        AppRoleManager RoleManager { get; }
 
         void DisableAutoDetectChanges();
         Task<int> CompleteAsync();

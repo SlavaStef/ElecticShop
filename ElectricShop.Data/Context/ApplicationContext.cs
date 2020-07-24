@@ -16,5 +16,7 @@ namespace ElectricShop.Data.Context
         public DbSet<ProductBrand> ProductBrands { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductSubCategory> ProductSubCategories { get; set; }
+
+        public static ApplicationContext Create() => new ApplicationContext();
     }
 }

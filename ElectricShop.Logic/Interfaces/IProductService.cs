@@ -1,10 +1,11 @@
 ﻿using ElectricShop.Common.DTO;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ElectricShop.Logic.Interfaces
 {
-    public interface IProductService
+    public interface IProductService : IDisposable
     {
         Task AddProductAsync(ProductDTO product);
         Task<ProductDTO> GetProductAsync(int id);
@@ -13,6 +14,5 @@ namespace ElectricShop.Logic.Interfaces
         Task RemoveProductAsync(ProductDTO product);
         Task RemoveProductAsync(int id);
         Task<IEnumerable<ProductDTO>> FindProductsAsync(string searchString);
-        void Dispose();
     }
 }

@@ -99,12 +99,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="DTO\ProductBrandDTO.cs" />
     <Compile Include="DTO\ProductCategoryDTO.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="DTO\ProductSubCategoryDTO.cs" />
-    <Compile Include="Models\Identity\AppUser.cs" />
-    <Compile Include="Models\Identity\UserManager.cs" />
+    <Compile Include="Models\AppRole.cs" />
+    <Compile Include="Models\AppRoleManager.cs" />
+    <Compile Include="Models\AppUser.cs" />
+    <Compile Include="Models\AppUserManager.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductBrand.cs" />
     <Compile Include="Models\ProductCategory.cs" />
