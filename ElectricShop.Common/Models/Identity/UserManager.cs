@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNet.Identity;
 
-namespace ElectricShop.Common.Models.Identity
+namespace ElectricShop.Common.Models
 {
     public class UserManager : UserManager<AppUser>
     {
