@@ -1,8 +1,12 @@
 ﻿using ElectricShop.Common.DTO;
 using ElectricShop.Common.Models;
+using ElectricShop.Data.Context;
 using ElectricShop.Data.Interfaces;
 using ElectricShop.Logic.Interfaces;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +41,15 @@ namespace ElectricShop.Logic.Services
             }
             else
                 throw new Exception();
+        }
+
+        public AppUserManager CreateAppUserManager(IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
+        {
+            //ApplicationContext db = context.Get<ApplicationContext>();
+            //var db = new ApplicationContext();
+            AppUserManager manager = new AppUserManager(new UserStore<AppUser>(new ApplicationContext()));
+
+            return manager;
         }
 
         public async Task<ClaimsIdentity> Authenticate(UserDTO userDTO)

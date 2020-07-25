@@ -113,7 +113,7 @@
     <Compile Include="Models\ProductBrand.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductSubCategory.cs" />
-    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\CreateUserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

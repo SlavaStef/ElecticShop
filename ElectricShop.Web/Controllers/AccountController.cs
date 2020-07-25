@@ -56,7 +56,7 @@ namespace ElectricShop.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register(RegisterModel model)
+        public async Task<ActionResult> Register(CreateUserModel model)
         {
             await SetInitialDataAsync();
             if (ModelState.IsValid)
@@ -65,7 +65,6 @@ namespace ElectricShop.Web.Controllers
                 {
                     Email = model.Email,
                     Password = model.Password,
-                    Address = model.Address,
                     Name = model.Name,
                     Role = "user"
                 };
