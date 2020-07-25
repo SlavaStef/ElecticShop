@@ -1,6 +1,7 @@
 ﻿using ElectricShop.Common.DTO;
 using ElectricShop.Common.Models;
 using ElectricShop.Logic.Interfaces;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
@@ -17,30 +18,32 @@ namespace ElectricShop.Web.Controllers
         private IUserService UserService { get { return HttpContext.GetOwinContext().GetUserManager<IUserService>(); } }
         private IAuthenticationManager AuthenticationManager { get { return HttpContext.GetOwinContext().Authentication; } }
 
-        public ActionResult Login()
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.returnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Login(LoginModel model)
-        {
-            await SetInitialDataAsync();
-
+        [AllowAnonymous]
+        public async Task<ActionResult> Login(LoginModel model, string returnUrl)
+        {            
             if (ModelState.IsValid)
             {
-                UserDTO userDTO = new UserDTO { Email = model.Email, Password = model.Password };
-                ClaimsIdentity claim = await UserService.Authenticate(userDTO);
+                AppUser user = await UserManager.FindAsync(model.Name, model.Password);
 
-                if (claim == null)
-                    throw new Exception();
+                if (user == null)
+                    ModelState.AddModelError("", "Invalid name or password");
                 else
                 {
-                    AuthenticationManager.SignOut();
-                    AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, claim);
-                    return RedirectToAction("Index", "Home");
+                    ClaimsIdentity ident = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                    AuthManager.SignOut();
+                    AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, ident);
+                    return Redirect(returnUrl);
                 }
             }
+            ViewBag.returnUrl = returnUrl;
             return View(model);
         }
 
@@ -50,10 +53,7 @@ namespace ElectricShop.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Register()
-        {
-            return View();
-        }
+        public ActionResult Register() => View();
 
         [HttpPost]
         public async Task<ActionResult> Register(CreateUserModel model)
@@ -85,5 +85,9 @@ namespace ElectricShop.Web.Controllers
                 Role = "admin",
             }, new List<string> { "user", "admin" });
         }
+
+        private AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } }
+
+        private IAuthenticationManager AuthManager { get { return HttpContext.GetOwinContext().Authentication; } }
     }
 }

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ElectricShop.Web.Areas.Administration.Controllers
 {
+    [Authorize]
     public class AdminProductController : Controller
     {
         public IProductService service { get; set; }
