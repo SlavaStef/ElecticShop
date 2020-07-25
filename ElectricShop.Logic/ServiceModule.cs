@@ -13,6 +13,7 @@ namespace ElectricShop.Logic
             Bind<IUnitOfWork>().To<UnitOfWork>();
             Bind<IProductService>().To<ProductService>();
             Bind<IUserService>().To<UserService>();
+            Bind<IRoleService>().To<RoleService>();
         }
     }
 }
