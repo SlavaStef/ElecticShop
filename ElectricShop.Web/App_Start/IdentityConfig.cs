@@ -10,10 +10,14 @@ namespace ElectricShop.Web.App_Start
     public class IdentityConfig
     {
         ServiceCreator serviceCreator = new ServiceCreator();
+        RoleService roleService = new RoleService();
+
         public void Configuration(IAppBuilder app)
         {
             app.CreatePerOwinContext(CreateUserService);
             app.CreatePerOwinContext<AppUserManager>(CreateUserService().CreateAppUserManager);
+            app.CreatePerOwinContext<AppRoleManager>(roleService.CreateAppRoleManager);
+
             app.UseCookieAuthentication(new Microsoft.Owin.Security.Cookies.CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
