@@ -10,10 +10,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
 {
     public class AdminUserController : Controller
     {
-        public ActionResult Index()
-        {
-            return View(UserManager.Users);
-        }
+        public ActionResult Index() => View(UserManager.Users);
 
         public ActionResult Create() => View();
 
@@ -31,6 +28,20 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Delete(string id)
+        {
+            AppUser user = await UserManager.FindByIdAsync(id);
+
+            if(user != null)
+            {
+                IdentityResult result = await UserManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                    return RedirectToAction("Index");
+            }
+            return View("Error", new string[] { "User not found" });
+        }
 
 
         private AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } } 

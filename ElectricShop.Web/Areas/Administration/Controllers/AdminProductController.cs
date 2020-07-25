@@ -16,15 +16,9 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         }
 
 
-        public async Task<ActionResult> Index()
-        {
-            return View(await service.GetAllProductsAsync());
-        }
+        public async Task<ActionResult> Index() => View(await service.GetAllProductsAsync());
 
-        public ActionResult Create()
-        {
-            return View();
-        }
+        public ActionResult Create() => View();
 
         [HttpPost]
         public async Task<ActionResult> Create(ProductDTO product)
