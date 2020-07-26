@@ -20,5 +20,10 @@ namespace ElectricShop.Logic
         {
             return new UserService(_context);
         }
+
+        public IRoleService CreateRoleService()
+        {
+            return new RoleService(_context);
+        }
     }
 }

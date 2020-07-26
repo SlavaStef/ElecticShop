@@ -105,6 +105,7 @@ namespace ElectricShop.Logic.Services
 
 
 
+
         public AppUserManager CreateAppUserManager(IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
         {
             //ApplicationContext db = context.Get<ApplicationContext>();

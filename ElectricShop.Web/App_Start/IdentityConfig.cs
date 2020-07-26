@@ -10,13 +10,12 @@ namespace ElectricShop.Web.App_Start
     public class IdentityConfig
     {
         ServiceCreator serviceCreator = new ServiceCreator();
-        RoleService roleService = new RoleService();
 
         public void Configuration(IAppBuilder app)
         {
             app.CreatePerOwinContext(CreateUserService);
             app.CreatePerOwinContext<AppUserManager>(CreateUserService().CreateAppUserManager);
-            app.CreatePerOwinContext<AppRoleManager>(roleService.CreateAppRoleManager);
+            app.CreatePerOwinContext<AppRoleManager>(CreateRoleService().CreateAppRoleManager);
 
             app.UseCookieAuthentication(new Microsoft.Owin.Security.Cookies.CookieAuthenticationOptions
             {
@@ -25,9 +24,10 @@ namespace ElectricShop.Web.App_Start
             });   
         }
 
-        private IUserService CreateUserService()
-        {
-            return serviceCreator.CreateUserService();
-        }
+        private IUserService CreateUserService() => serviceCreator.CreateUserService();
+
+        private IRoleService CreateRoleService() => serviceCreator.CreateRoleService();
+
+
     }
 }

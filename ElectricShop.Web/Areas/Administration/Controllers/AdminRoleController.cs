@@ -19,6 +19,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         IRoleService roleService { get; set; }
         IUserService userService { get; set; }
 
+
         public AdminRoleController(IRoleService roleService, IUserService userService)
         {
             this.roleService = roleService;
