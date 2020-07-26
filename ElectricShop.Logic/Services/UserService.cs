@@ -26,10 +26,8 @@ namespace ElectricShop.Logic.Services
         }
 
 
-        //Show all users
         public async Task<IEnumerable<AppUser>> GetUsers() => await context.UserManager.Users.ToListAsync();
 
-        //Create a user
         public async Task<IdentityResult> CreateUser(AppUser user, string password)
         {
             IdentityResult createResult = null;
@@ -45,7 +43,6 @@ namespace ElectricShop.Logic.Services
             return createResult;                
         }
 
-        //Delete a user
         public async Task<IdentityResult> DeleteUser(string Id)
         {
             AppUser user = await context.UserManager.FindByIdAsync(Id);
@@ -64,27 +61,23 @@ namespace ElectricShop.Logic.Services
 
         //Edit a user
 
-        //Login
-
-        //Logout
-
-        public async Task Create(UserDTO userDTO)
+        public async Task<ClaimsIdentity> Authenticate(LoginModel model)
         {
-            AppUser user = await context.UserManager.FindByEmailAsync(userDTO.Email);
+            AppUser user = await context.UserManager.FindAsync(model.Name, model.Password);
 
-            if (user == null)
+            if(user != null)
             {
-                user = new AppUser { Email = userDTO.Email, UserName = userDTO.Email };
-                IdentityResult result = await context.UserManager.CreateAsync(user, userDTO.Password);
+                ClaimsIdentity claim = await context.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
 
-                if (result.Errors.Count() > 0)
-                    throw new Exception();
-
-                await context.CompleteAsync();
+                return claim;
             }
-            else
-                throw new Exception();
+
+            return null;
         }
+
+        
+
+
 
         public AppUserManager CreateAppUserManager(IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
         {
@@ -93,35 +86,6 @@ namespace ElectricShop.Logic.Services
             AppUserManager manager = new AppUserManager(new UserStore<AppUser>(new ApplicationContext()));
 
             return manager;
-        }
-
-        public async Task<ClaimsIdentity> Authenticate(UserDTO userDTO)
-        {
-            ClaimsIdentity claim = null;
-
-            AppUser user = await context.UserManager.FindAsync(userDTO.Email, userDTO.Password);
-
-            if(user != null)
-               claim = await context.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-
-            return claim;
-
-        }
-
-        public async Task SetInitialData(UserDTO adminDTO, List<string> roles)
-        {
-            foreach(string roleName in roles)
-            {
-                AppRole role = await context.RoleManager.FindByNameAsync(roleName);
-
-                if(role == null)
-                {
-                    role = new AppRole { Name = roleName };
-                    await context.RoleManager.CreateAsync(role);
-                }
-            }
-
-            await Create(adminDTO);
         }
 
         public void Dispose()

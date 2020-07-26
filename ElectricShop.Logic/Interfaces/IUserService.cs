@@ -15,11 +15,9 @@ namespace ElectricShop.Logic.Interfaces
         Task<IEnumerable<AppUser>> GetUsers();
         Task<IdentityResult> CreateUser(AppUser user, string password);
         Task<IdentityResult> DeleteUser(string Id);
+        Task<ClaimsIdentity> Authenticate(LoginModel model);
 
 
-        Task Create(UserDTO userDTO);
         AppUserManager CreateAppUserManager(IdentityFactoryOptions<AppUserManager> options, IOwinContext context);
-        Task<ClaimsIdentity> Authenticate(UserDTO userDTO);
-        Task SetInitialData(UserDTO adminDTO, List<string> roles);
     }
 }

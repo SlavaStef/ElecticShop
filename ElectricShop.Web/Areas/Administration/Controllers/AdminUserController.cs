@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ElectricShop.Web.Areas.Administration.Controllers
 {
+    [Authorize]
     public class AdminUserController : Controller
     {
         IUserService userService;
