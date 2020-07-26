@@ -40,6 +40,45 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
             return View(name);
         }
 
+        public async Task<ActionResult> Edit(string id)
+        {
+            AppRole role = await RoleManager.FindByIdAsync(id);
+            string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
+            IEnumerable<AppUser> members = UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
+            IEnumerable<AppUser> nonMembers = UserManager.Users.Except(members);
+
+            return View(new RoleEditModel { Role = role, Members = members, NonMembers = nonMembers });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(RoleModificationModel model)
+        {
+            IdentityResult result;
+
+            if (ModelState.IsValid)
+            {
+                foreach (string userId in model.IdsToAdd ?? new string[] { })
+                {
+                    result = await UserManager.AddToRoleAsync(userId, model.RoleName);
+
+                    if (!result.Succeeded)
+                        return View("Error", result.Errors);
+                }
+
+                foreach (string userId in model.IdsToDelete ?? new string[] { })
+                {
+                    result = await UserManager.RemoveFromRoleAsync(userId,
+                        model.RoleName);
+
+                    if (!result.Succeeded)
+                        return View("Error", result.Errors);
+                }
+
+                return RedirectToAction("Index");
+            }
+            return View("Error", new string[] { "Role not found" });
+        }
+
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {
@@ -59,5 +98,6 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         }
 
         private AppRoleManager RoleManager { get { return HttpContext.GetOwinContext().GetUserManager<AppRoleManager>(); } }
+        private AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } }
     }
 }

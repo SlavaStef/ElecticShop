@@ -17,6 +17,9 @@ namespace ElectricShop.Web.Controllers
     {
         private IUserService UserService { get { return HttpContext.GetOwinContext().GetUserManager<IUserService>(); } }
         private IAuthenticationManager AuthenticationManager { get { return HttpContext.GetOwinContext().Authentication; } }
+        private AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } }
+        private IAuthenticationManager AuthManager { get { return HttpContext.GetOwinContext().Authentication; } }
+
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -86,8 +89,6 @@ namespace ElectricShop.Web.Controllers
             }, new List<string> { "user", "admin" });
         }
 
-        private AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } }
-
-        private IAuthenticationManager AuthManager { get { return HttpContext.GetOwinContext().Authentication; } }
+        
     }
 }
