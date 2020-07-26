@@ -17,7 +17,8 @@ namespace ElectricShop.Logic.Interfaces
         Task<IdentityResult> DeleteUser(string Id);
         Task<IdentityResult> EditUser(string id, string email, string password);
         Task<ClaimsIdentity> Authenticate(LoginModel model);
-
+        Task<IdentityResult> AddToRole(string userId, string roleName);
+        Task<IdentityResult> RemoveFromRole(string userId, string roleName);
 
         AppUserManager CreateAppUserManager(IdentityFactoryOptions<AppUserManager> options, IOwinContext context);
     }

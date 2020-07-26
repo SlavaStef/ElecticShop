@@ -99,8 +99,9 @@ namespace ElectricShop.Logic.Services
             return null;
         }
 
+        public async Task<IdentityResult> AddToRole(string userId, string roleName) => await context.UserManager.AddToRoleAsync(userId, roleName);
 
-        
+        public async Task<IdentityResult> RemoveFromRole(string userId, string roleName) => await context.UserManager.RemoveFromRoleAsync(userId, roleName);
 
 
 

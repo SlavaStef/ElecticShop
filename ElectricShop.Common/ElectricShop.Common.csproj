@@ -114,7 +114,7 @@
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductSubCategory.cs" />
     <Compile Include="Models\CreateUserModel.cs" />
-    <Compile Include="Models\RoleEditModel.cs" />
+    <Compile Include="Models\RoleModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

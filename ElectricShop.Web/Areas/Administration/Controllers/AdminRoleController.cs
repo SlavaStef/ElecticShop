@@ -2,6 +2,7 @@
 using ElectricShop.Logic.Interfaces;
 using ElectricShop.Logic.Services;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -16,14 +17,16 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
     public class AdminRoleController : Controller
     {
         IRoleService roleService { get; set; }
+        IUserService userService { get; set; }
 
-        public AdminRoleController(IRoleService roleService)
+        public AdminRoleController(IRoleService roleService, IUserService userService)
         {
             this.roleService = roleService;
+            this.userService = userService;
         }
 
 
-        public ActionResult Index() => View(RoleManager.Roles);
+        public async Task<ActionResult> Index() => View(await roleService.GetRoles());
 
         public ActionResult Create() => View();
 
@@ -32,9 +35,9 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         {
             if(ModelState.IsValid)
             {
-                IdentityResult result = await RoleManager.CreateAsync(new AppRole(name));
+                IdentityResult createResult = await roleService.CreateRole(name);
 
-                if (result.Succeeded)
+                if (createResult.Succeeded)
                     return RedirectToAction("Index");
             }
             return View(name);
@@ -42,10 +45,13 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
 
         public async Task<ActionResult> Edit(string id)
         {
-            AppRole role = await RoleManager.FindByIdAsync(id);
+            AppRole role = await roleService.GetRole(id);
             string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
-            IEnumerable<AppUser> members = UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
-            IEnumerable<AppUser> nonMembers = UserManager.Users.Except(members);
+
+            IEnumerable<AppUser> users = await userService.GetUsers();
+
+            IEnumerable<AppUser> members = users.Where(x => memberIDs.Any(y => y == x.Id));
+            IEnumerable<AppUser> nonMembers = users.Except(members);
 
             return View(new RoleEditModel { Role = role, Members = members, NonMembers = nonMembers });
         }
@@ -59,7 +65,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
             {
                 foreach (string userId in model.IdsToAdd ?? new string[] { })
                 {
-                    result = await UserManager.AddToRoleAsync(userId, model.RoleName);
+                    result = await userService.AddToRole(userId, model.RoleName);
 
                     if (!result.Succeeded)
                         return View("Error", result.Errors);
@@ -67,7 +73,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
 
                 foreach (string userId in model.IdsToDelete ?? new string[] { })
                 {
-                    result = await UserManager.RemoveFromRoleAsync(userId,
+                    result = await userService.RemoveFromRole(userId,
                         model.RoleName);
 
                     if (!result.Succeeded)
@@ -82,22 +88,13 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {
-            AppRole role = await RoleManager.FindByIdAsync(id);
-
-            if(role != null)
-            {
-                IdentityResult result = await RoleManager.DeleteAsync(role);
-
-                if (result.Succeeded)
-                    return RedirectToAction("Index");
-                else
-                    return View("Error", result.Errors);
-            }
-            else
-                return View("Error", new string[] { "Role not found" });
+            IdentityResult deleteResult = await roleService.DeleteRole(id);
+            
+            if(deleteResult.Succeeded)
+                return RedirectToAction("Index");
+            
+            return View("Error", deleteResult.Errors);
         }
 
-        private AppRoleManager RoleManager { get { return HttpContext.GetOwinContext().GetUserManager<AppRoleManager>(); } }
-        private AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } }
     }
 }

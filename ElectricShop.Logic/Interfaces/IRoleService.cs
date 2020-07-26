@@ -1,4 +1,5 @@
 ﻿using ElectricShop.Common.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using System.Collections.Generic;
@@ -8,13 +9,12 @@ namespace ElectricShop.Logic.Interfaces
 {
     public interface IRoleService
     {
-        Task CreateRoleAsync(AppRole role);
-        Task DeleteRoleAsync(AppRole role);
-        Task<AppRole> FindRoleByIdAsync(string id);
-        Task<AppRole> FindRoleByNameAsync(string name);
-        Task<bool> RoleExistsAsync(string name);
-        Task UpdateRoleAsync(AppRole role);
-        IEnumerable<AppRole> Roles { get; set; }
+        Task<IEnumerable<AppRole>> GetRoles();
+        Task<AppRole> GetRole(string id);
+        Task<IdentityResult> CreateRole(string name);
+        Task<IdentityResult> DeleteRole(string id);
+        
+
         AppRoleManager CreateAppRoleManager(IdentityFactoryOptions<AppRoleManager> options, IOwinContext context);
     }
 }
