@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -17,27 +18,69 @@ namespace ElectricShop.Logic.Services
 {
     public class UserService : IUserService
     {
-        IUnitOfWork _context { get; set; }
+        IUnitOfWork context { get; set; }
 
         public UserService(IUnitOfWork context)
         {
-            _context = context;
+            this.context = context;
         }
 
 
+        //Show all users
+        public async Task<IEnumerable<AppUser>> GetUsers() => await context.UserManager.Users.ToListAsync();
+
+        //Create a user
+        public async Task<IdentityResult> CreateUser(AppUser user, string password)
+        {
+            IdentityResult createResult = null;
+
+            if (await context.UserManager.FindByEmailAsync(user.Email) == null)
+            {
+                createResult = await context.UserManager.CreateAsync(user, password);
+                
+                if(createResult.Succeeded)
+                    await context.CompleteAsync();
+            }
+
+            return createResult;                
+        }
+
+        //Delete a user
+        public async Task<IdentityResult> DeleteUser(string Id)
+        {
+            AppUser user = await context.UserManager.FindByIdAsync(Id);
+            IdentityResult deleteResult = null;
+
+            if(user != null)
+            {
+                deleteResult = await context.UserManager.DeleteAsync(user);
+
+                if (deleteResult.Succeeded)
+                    await context.CompleteAsync();
+            }
+
+            return deleteResult;            
+        }
+
+        //Edit a user
+
+        //Login
+
+        //Logout
+
         public async Task Create(UserDTO userDTO)
         {
-            AppUser user = await _context.UserManager.FindByEmailAsync(userDTO.Email);
+            AppUser user = await context.UserManager.FindByEmailAsync(userDTO.Email);
 
             if (user == null)
             {
                 user = new AppUser { Email = userDTO.Email, UserName = userDTO.Email };
-                IdentityResult result = await _context.UserManager.CreateAsync(user, userDTO.Password);
+                IdentityResult result = await context.UserManager.CreateAsync(user, userDTO.Password);
 
                 if (result.Errors.Count() > 0)
                     throw new Exception();
 
-                await _context.CompleteAsync();
+                await context.CompleteAsync();
             }
             else
                 throw new Exception();
@@ -56,10 +99,10 @@ namespace ElectricShop.Logic.Services
         {
             ClaimsIdentity claim = null;
 
-            AppUser user = await _context.UserManager.FindAsync(userDTO.Email, userDTO.Password);
+            AppUser user = await context.UserManager.FindAsync(userDTO.Email, userDTO.Password);
 
             if(user != null)
-               claim = await _context.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+               claim = await context.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
 
             return claim;
 
@@ -69,12 +112,12 @@ namespace ElectricShop.Logic.Services
         {
             foreach(string roleName in roles)
             {
-                AppRole role = await _context.RoleManager.FindByNameAsync(roleName);
+                AppRole role = await context.RoleManager.FindByNameAsync(roleName);
 
                 if(role == null)
                 {
                     role = new AppRole { Name = roleName };
-                    await _context.RoleManager.CreateAsync(role);
+                    await context.RoleManager.CreateAsync(role);
                 }
             }
 
@@ -83,7 +126,7 @@ namespace ElectricShop.Logic.Services
 
         public void Dispose()
         {
-            //_context.Dispose();
+            //context.Dispose();
         }
     }
 }

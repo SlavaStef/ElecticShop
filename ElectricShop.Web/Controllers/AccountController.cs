@@ -15,6 +15,13 @@ namespace ElectricShop.Web.Controllers
 {
     public class AccountController : Controller
     {
+        IUserService userService;
+
+        public AccountController(IUserService service)
+        {
+            userService = service;
+        }
+
         private IUserService UserService { get { return HttpContext.GetOwinContext().GetUserManager<IUserService>(); } }
         private IAuthenticationManager AuthenticationManager { get { return HttpContext.GetOwinContext().Authentication; } }
         private AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } }
@@ -61,17 +68,14 @@ namespace ElectricShop.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Register(CreateUserModel model)
         {
-            await SetInitialDataAsync();
             if (ModelState.IsValid)
             {
-                UserDTO userDto = new UserDTO
-                {
-                    Email = model.Email,
-                    Password = model.Password,
-                    Name = model.Name,
-                    Role = "user"
-                };
-                return View("SuccessRegister");
+                AppUser user = new AppUser { UserName = model.Name, Email = model.Email };
+
+                IdentityResult result = await userService.CreateUser(user, model.Password);
+
+                if (result.Succeeded)
+                    return RedirectToAction("Index", "Home");
             }
             return View(model);
         }
@@ -88,7 +92,5 @@ namespace ElectricShop.Web.Controllers
                 Role = "admin",
             }, new List<string> { "user", "admin" });
         }
-
-        
     }
 }
