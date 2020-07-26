@@ -12,7 +12,8 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
     [Authorize]
     public class AdminUserController : Controller
     {
-        IUserService userService;
+        IUserService userService { get; set; }
+
 
         public AdminUserController(IUserService service)
         {
@@ -50,7 +51,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
 
         public async Task<ActionResult> Edit(string id)
         {
-            AppUser user = await UserManager.FindByIdAsync(id);
+            AppUser user = await userService.GetUser(id);
 
             if (user != null)
                 return View(user);
@@ -61,36 +62,12 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(string id, string email, string password)
         {
-            AppUser user = await UserManager.FindByIdAsync(id);
+            IdentityResult editResult = await userService.EditUser(id, email, password);
 
-            if (user != null)
-            {
-                user.Email = email;
-                IdentityResult validEmail = await UserManager.UserValidator.ValidateAsync(user);
-
-                IdentityResult validPass = null;
-                if (password != string.Empty)
-                {
-                    validPass = await UserManager.PasswordValidator.ValidateAsync(password);
-                    if (validPass.Succeeded)
-                        user.PasswordHash = UserManager.PasswordHasher.HashPassword(password);
-                }
-
-                if ((validEmail.Succeeded && validPass == null) || (validEmail.Succeeded && password != string.Empty && validPass.Succeeded))
-                {
-                    IdentityResult result = await UserManager.UpdateAsync(user);
-
-                    if (result.Succeeded)
-                        return RedirectToAction("Index");
-                    else
-                        throw new Exception();
-                }
-            }
-
-            return View(user);
+            if(editResult.Succeeded)
+                return RedirectToAction("Index");
+                    
+            return View(await userService.GetUser(id));
         }
-
-
-        private AppUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<AppUserManager>(); } } 
     }
 }

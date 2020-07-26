@@ -28,6 +28,8 @@ namespace ElectricShop.Logic.Services
 
         public async Task<IEnumerable<AppUser>> GetUsers() => await context.UserManager.Users.ToListAsync();
 
+        public async Task<AppUser> GetUser(string id) => await context.UserManager.FindByIdAsync(id);
+
         public async Task<IdentityResult> CreateUser(AppUser user, string password)
         {
             IdentityResult createResult = null;
@@ -59,7 +61,29 @@ namespace ElectricShop.Logic.Services
             return deleteResult;            
         }
 
-        //Edit a user
+        public async Task<IdentityResult> EditUser(string id, string email, string password)
+        {
+            IdentityResult updateResult = null;
+            AppUser user = await context.UserManager.FindByIdAsync(id);
+
+            user.Email = email;
+            IdentityResult validEmail = await context.UserManager.UserValidator.ValidateAsync(user);
+
+            IdentityResult validPass = null;
+            if (password != string.Empty)
+            {
+                validPass = await context.UserManager.PasswordValidator.ValidateAsync(password);
+                if (validPass.Succeeded)
+                    user.PasswordHash = context.UserManager.PasswordHasher.HashPassword(password);
+            }
+
+            if ((validEmail.Succeeded && validPass == null) || (validEmail.Succeeded && password != string.Empty && validPass.Succeeded))
+            {
+                updateResult = await context.UserManager.UpdateAsync(user);    
+            }
+
+            return updateResult;
+        }
 
         public async Task<ClaimsIdentity> Authenticate(LoginModel model)
         {
@@ -74,6 +98,7 @@ namespace ElectricShop.Logic.Services
 
             return null;
         }
+
 
         
 
