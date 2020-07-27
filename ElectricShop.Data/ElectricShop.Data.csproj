@@ -147,6 +147,11 @@
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Context\ApplicationContext.cs" />
+    <Compile Include="Migrations\202007242030318_InitialCreate.cs" />
+    <Compile Include="Migrations\202007242030318_InitialCreate.designer.cs">
+      <DependentUpon>202007242030318_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ProductBrandRepository.cs" />
     <Compile Include="Repositories\ProductCategoryRepository.cs" />
@@ -164,6 +169,11 @@
       <Project>{7a15add8-66c9-4df8-b9cb-ad8bbe7c52f7}</Project>
       <Name>ElectricShop.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202007242030318_InitialCreate.resx">
+      <DependentUpon>202007242030318_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -17,6 +17,18 @@
             @Html.TextBox("searchString", "", new { @class = "form-control mr-sm-2", placeholder = "Search" })
             <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
         }
+
+        <!-- Login/Register -->
+        @if (!User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("Sign In", "Login", "Account", new { @returnUrl = Url.Action(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString()) }, new { @class = "btn btn-outline-primary" })
+            @Html.ActionLink("Sign Up", "Register", "Account", new { area = "" }, new { @class = "btn btn-outline-primary" })
+        }
+        else
+        {            
+            <h4>Account</h4>
+            @Html.ActionLink("Sign Out", "Logout", "Account", new { area = "" }, new { @class = "btn btn-primary" })
+        }
     </nav>
 
     <!--Body-->
