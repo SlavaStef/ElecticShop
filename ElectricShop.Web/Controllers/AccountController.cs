@@ -32,7 +32,16 @@ namespace ElectricShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                AppUser user = new AppUser { UserName = model.Name, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, City = model.City, Address = model.Address, PhoneNumber = model.PhoneNumber };
+                AppUser user = new AppUser 
+                { 
+                    UserName = model.Name, 
+                    Email = model.Email, 
+                    FirstName = model.FirstName, 
+                    LastName = model.LastName, 
+                    City = model.City, 
+                    Address = model.Address, 
+                    PhoneNumber = model.PhoneNumber 
+                };
 
                 IdentityResult result = await userService.CreateUser(user, model.Password);
 

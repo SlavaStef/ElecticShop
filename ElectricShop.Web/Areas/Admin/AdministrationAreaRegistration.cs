@@ -8,15 +8,15 @@ namespace ElectricShop.Web.Areas.Administration
         {
             get 
             {
-                return "Administration";
+                return "Admin";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Administration_default",
-                "Administration/{controller}/{action}/{id}",
+                "Admin_default",
+                "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
