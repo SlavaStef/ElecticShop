@@ -14,7 +14,7 @@
                 @Html.ActionLink("E-Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
                 <!-- Search -->
-                @using (Html.BeginForm("Search", "Search", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
+                @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
                 {
                     @Html.TextBox("searchString", "", new { @class = "form-control mr-sm-2", placeholder = "Search" })
                     <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
@@ -24,7 +24,7 @@
                 <ul class="nav navbar-nav">
                     <!-- links -->
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @Html.Partial("_LoginPanelPartial")
             </div>
         </div>
     </nav>
