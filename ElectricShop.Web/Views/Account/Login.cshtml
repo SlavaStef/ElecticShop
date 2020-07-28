@@ -7,6 +7,8 @@
 
 <h2>Log In</h2>
 
+<hr />
+
 @Html.ValidationSummary()
 
 @using (Html.BeginForm())
@@ -23,5 +25,8 @@
         <label>Password</label>
         @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
     </div>
+
+    <p>@Html.ActionLink("Register as a new user", "Register")</p>
+
     <button class="btn btn-primary" type="submit">Log In</button>
 }

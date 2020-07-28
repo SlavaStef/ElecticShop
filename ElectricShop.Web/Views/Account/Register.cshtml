@@ -5,11 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create User</h2>
+<h2>Register</h2>
+<hr />
 
 @Html.ValidationSummary(false)
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     <div class="form-group">
         <label>Name</label>
@@ -26,7 +27,7 @@
         @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
     </div>
 
-    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary">Register</button>
 
-    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-default" })
 }

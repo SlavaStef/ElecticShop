@@ -8,27 +8,25 @@
 </head>
 <body>
     <!--Navigation bar-->
-    <nav class="navbar navbar-light bg-dark text-white">
-        Online Store
+    <nav class="navbar bg-dark navbar-fixed-top">
+        <div class="container">
+            <div class="navbar">
+                @Html.ActionLink("E-Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
-        <!-- Search -->
-        @using (Html.BeginForm("Search", "Search", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
-        {
-            @Html.TextBox("searchString", "", new { @class = "form-control mr-sm-2", placeholder = "Search" })
-            <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-        }
-
-        <!-- Login/Register -->
-        @if (!User.Identity.IsAuthenticated)
-        {
-            @Html.ActionLink("Sign In", "Login", "Account", new { @returnUrl = Url.Action(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString()) }, new { @class = "btn btn-outline-primary" })
-            @Html.ActionLink("Sign Up", "Register", "Account", new { area = "" }, new { @class = "btn btn-outline-primary" })
-        }
-        else
-        {            
-            <h4>Account</h4>
-            @Html.ActionLink("Sign Out", "Logout", "Account", new { area = "" }, new { @class = "btn btn-primary" })
-        }
+                <!-- Search -->
+                @using (Html.BeginForm("Search", "Search", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
+                {
+                    @Html.TextBox("searchString", "", new { @class = "form-control mr-sm-2", placeholder = "Search" })
+                    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+                }
+            </div>
+            <div class="navbar">
+                <ul class="nav navbar-nav">
+                    <!-- links -->
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
     </nav>
 
     <!--Body-->
