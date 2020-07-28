@@ -1,5 +1,6 @@
 ﻿using ElectricShop.Common.DTO;
 using ElectricShop.Common.Models;
+using ElectricShop.Common.ViewModels;
 using ElectricShop.Data.Context;
 using ElectricShop.Data.Interfaces;
 using ElectricShop.Logic.Interfaces;
@@ -85,7 +86,7 @@ namespace ElectricShop.Logic.Services
             return updateResult;
         }
 
-        public async Task<ClaimsIdentity> Authenticate(LoginModel model)
+        public async Task<ClaimsIdentity> Authenticate(LoginViewModel model)
         {
             AppUser user = await context.UserManager.FindAsync(model.Name, model.Password);
 

@@ -1,30 +1,34 @@
-﻿@model ElectricShop.Common.Models.CreateUserModel
+﻿@model ElectricShop.Common.ViewModels.RegisterViewModel
 
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Register</h2>
-<hr />
-
-@Html.ValidationSummary(false)
-
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
 {
+    <h2>Register</h2>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
     <div class="form-group">
-        <label>Name</label>
+        @Html.LabelFor(m => m.Name, new { @class = "control-label" })
         @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        <label>Email</label>
+        @Html.LabelFor(m => m.Email, new { @class = "control-label" })
         @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        <label>Password</label>
+        @Html.LabelFor(m => m.Password, new { @class = "control-label" })
         @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+        @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control" })
     </div>
 
     <button type="submit" class="btn btn-primary">Register</button>

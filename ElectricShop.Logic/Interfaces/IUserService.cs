@@ -1,4 +1,5 @@
 ﻿using ElectricShop.Common.Models;
+using ElectricShop.Common.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -16,7 +17,7 @@ namespace ElectricShop.Logic.Interfaces
         Task<IdentityResult> CreateUser(AppUser user, string password);
         Task<IdentityResult> DeleteUser(string Id);
         Task<IdentityResult> EditUser(string id, string email, string password);
-        Task<ClaimsIdentity> Authenticate(LoginModel model);
+        Task<ClaimsIdentity> Authenticate(LoginViewModel model);
         Task<IdentityResult> AddToRole(string userId, string roleName);
         Task<IdentityResult> RemoveFromRole(string userId, string roleName);
 

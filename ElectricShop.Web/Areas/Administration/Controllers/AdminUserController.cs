@@ -1,4 +1,5 @@
 ﻿using ElectricShop.Common.Models;
+using ElectricShop.Common.ViewModels;
 using ElectricShop.Logic.Interfaces;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -26,7 +27,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         public ActionResult Create() => View();
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreateUserModel model)
+        public async Task<ActionResult> Create(RegisterViewModel model)
         {
             if(ModelState.IsValid)
             {

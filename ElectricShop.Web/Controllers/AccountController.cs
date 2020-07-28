@@ -1,5 +1,6 @@
 ﻿using ElectricShop.Common.DTO;
 using ElectricShop.Common.Models;
+using ElectricShop.Common.ViewModels;
 using ElectricShop.Logic.Interfaces;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -27,7 +28,7 @@ namespace ElectricShop.Web.Controllers
         public ActionResult Register() => View();
 
         [HttpPost]
-        public async Task<ActionResult> Register(CreateUserModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -48,7 +49,7 @@ namespace ElectricShop.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Login(LoginModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if(ModelState.IsValid)
             {
