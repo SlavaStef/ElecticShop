@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "ElectricShop.Data.Context.ApplicationContext";
         }
 
         protected override void Seed(ElectricShop.Data.Context.ApplicationContext context)

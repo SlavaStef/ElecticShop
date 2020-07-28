@@ -147,9 +147,9 @@
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Context\ApplicationContext.cs" />
-    <Compile Include="Migrations\202007242030318_InitialCreate.cs" />
-    <Compile Include="Migrations\202007242030318_InitialCreate.designer.cs">
-      <DependentUpon>202007242030318_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202007281313516_Initial.cs" />
+    <Compile Include="Migrations\202007281313516_Initial.designer.cs">
+      <DependentUpon>202007281313516_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,8 +171,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202007242030318_InitialCreate.resx">
-      <DependentUpon>202007242030318_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202007281313516_Initial.resx">
+      <DependentUpon>202007281313516_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
