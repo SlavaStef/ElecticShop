@@ -2,7 +2,7 @@
 
 namespace ElectricShop.Common.ViewModels
 {
-    public class RegisterViewModel
+    public class UserEditViewModel
     {
         [Required]
         [EmailAddress]
@@ -14,20 +14,9 @@ namespace ElectricShop.Common.ViewModels
         public string Name { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match")]
-        public string ConfirmPassword { get; set; }
-
-        [Required]
         [Display(Name = "First name")]
         public string FirstName { get; set; }
-        
+
         [Required]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
@@ -43,7 +32,5 @@ namespace ElectricShop.Common.ViewModels
         [Required]
         [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }
-
-
     }
 }

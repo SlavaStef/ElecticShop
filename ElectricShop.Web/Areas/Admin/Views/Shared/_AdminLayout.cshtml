@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
 </head>
 <body>
-    @Html.Partial("_Navbar")
+    @Html.Partial("~/Views/Shared/_Navbar.cshtml")
 
-    <!--Body-->
     <div class="container-fluid">
         <div class="row justify-content-md-center">
             <div class="col-2">
-
+                @Html.Partial("~/Areas/Admin/Views/Shared/_AdminMenuPartial.cshtml")
             </div>
             <div class="col-8">
                 @RenderBody()
@@ -21,9 +20,5 @@
         </div>
     </div>
 
-    <!--Scripts-->
-    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/popper.min.js"></script>
 </body>
 </html>
