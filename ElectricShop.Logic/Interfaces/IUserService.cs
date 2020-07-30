@@ -1,4 +1,5 @@
-﻿using ElectricShop.Common.Models;
+﻿using ElectricShop.Common.DTO;
+using ElectricShop.Common.Models;
 using ElectricShop.Common.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -13,10 +14,10 @@ namespace ElectricShop.Logic.Interfaces
     public interface IUserService : IDisposable
     {
         Task<IEnumerable<AppUser>> GetUsers();
-        Task<AppUser> GetUser(string id);
+        Task<UserDTO> GetUser(string id);
         Task<IdentityResult> CreateUser(AppUser user, string password);
         Task<IdentityResult> DeleteUser(string Id);
-        Task<IdentityResult> EditUser(string id, string email, string password);
+        Task<IdentityResult> EditUser(UserDTO user);
         Task<ClaimsIdentity> Authenticate(LoginViewModel model);
         Task<IdentityResult> AddToRole(string userId, string roleName);
         Task<IdentityResult> RemoveFromRole(string userId, string roleName);

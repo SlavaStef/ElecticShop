@@ -1,9 +1,11 @@
-﻿using ElectricShop.Common.DTO;
+﻿using AutoMapper;
+using ElectricShop.Common.DTO;
 using ElectricShop.Common.Models;
 using ElectricShop.Common.ViewModels;
 using ElectricShop.Data.Context;
 using ElectricShop.Data.Interfaces;
 using ElectricShop.Logic.Interfaces;
+using ElectricShop.Logic.MapperProfiles;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -20,6 +22,12 @@ namespace ElectricShop.Logic.Services
     public class UserService : IUserService
     {
         IUnitOfWork context { get; set; }
+        MapperConfiguration config = new MapperConfiguration(cfg =>
+        {
+            cfg.AddProfile<UserToUserDTOMapperProfile>();
+            cfg.AddProfile<UserDTOtoUserMapperProfile>();
+
+        });
 
         public UserService(IUnitOfWork context)
         {
@@ -29,7 +37,13 @@ namespace ElectricShop.Logic.Services
 
         public async Task<IEnumerable<AppUser>> GetUsers() => await context.UserManager.Users.ToListAsync();
 
-        public async Task<AppUser> GetUser(string id) => await context.UserManager.FindByIdAsync(id);
+        public async Task<UserDTO> GetUser(string id)
+        {
+            AppUser user = await context.UserManager.FindByIdAsync(id);
+            IMapper mapper = new Mapper(config);
+
+            return mapper.Map<UserDTO>(user);
+        }
 
         public async Task<IdentityResult> CreateUser(AppUser user, string password)
         {
@@ -62,25 +76,19 @@ namespace ElectricShop.Logic.Services
             return deleteResult;            
         }
 
-        public async Task<IdentityResult> EditUser(string id, string email, string password)
+        public async Task<IdentityResult> EditUser(UserDTO user)
         {
+            AppUser _user = await context.UserManager.FindByIdAsync(user.Id);
+
+            IMapper mapper = new Mapper(config);
+            _user = mapper.Map(user, _user);
+
+            IdentityResult userValid = await context.UserManager.UserValidator.ValidateAsync(_user);
             IdentityResult updateResult = null;
-            AppUser user = await context.UserManager.FindByIdAsync(id);
 
-            user.Email = email;
-            IdentityResult validEmail = await context.UserManager.UserValidator.ValidateAsync(user);
-
-            IdentityResult validPass = null;
-            if (password != string.Empty)
+            if (userValid.Succeeded)
             {
-                validPass = await context.UserManager.PasswordValidator.ValidateAsync(password);
-                if (validPass.Succeeded)
-                    user.PasswordHash = context.UserManager.PasswordHasher.HashPassword(password);
-            }
-
-            if ((validEmail.Succeeded && validPass == null) || (validEmail.Succeeded && password != string.Empty && validPass.Succeeded))
-            {
-                updateResult = await context.UserManager.UpdateAsync(user);    
+                updateResult = await context.UserManager.UpdateAsync(_user);
             }
 
             return updateResult;

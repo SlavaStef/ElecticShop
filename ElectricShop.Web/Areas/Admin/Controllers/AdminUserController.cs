@@ -1,4 +1,5 @@
-﻿using ElectricShop.Common.Models;
+﻿using ElectricShop.Common.DTO;
+using ElectricShop.Common.Models;
 using ElectricShop.Common.ViewModels;
 using ElectricShop.Logic.Interfaces;
 using Microsoft.AspNet.Identity;
@@ -52,7 +53,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
 
         public async Task<ActionResult> Edit(string id)
         {
-            AppUser user = await userService.GetUser(id);
+            UserDTO user = await userService.GetUser(id);
 
             if (user != null)
                 return View(user);
@@ -61,14 +62,14 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(string id, string email, string password)
+        public async Task<ActionResult> Edit(UserDTO user)
         {
-            IdentityResult editResult = await userService.EditUser(id, email, password);
+            IdentityResult editResult = await userService.EditUser(user);
 
             if(editResult.Succeeded)
                 return RedirectToAction("Index");
                     
-            return View(await userService.GetUser(id));
+            return View(await userService.GetUser(user.Id));
         }
     }
 }
