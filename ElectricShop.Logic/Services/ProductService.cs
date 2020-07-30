@@ -34,6 +34,7 @@ namespace ElectricShop.Logic.Services
         public async Task AddProduct(ProductDTO product)
         {            
             await context.Products.AddAsync(mapper.Map<Product>(product));
+            await context.CompleteAsync();
         }
 
         public async Task EditProduct(ProductDTO product)
