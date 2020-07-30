@@ -10,106 +10,64 @@ namespace ElectricShop.Logic.Services
 {
     public class ProductService : IProductService
     {
-        IUnitOfWork _context { get; set; }
+        IUnitOfWork context { get; set; }
+        IMapper mapper { get; set; }
 
-        public ProductService(IUnitOfWork context)
+        public ProductService(IUnitOfWork context, IMapper mapper)
         {
-            _context = context;
+            this.context = context;
+            this.mapper = mapper;
         }
 
         
         public async Task<ProductDTO> GetProduct(int id)
         {
-            IMapper mapper = new MapperConfiguration(cfg => { 
-                cfg.CreateMap<Product, ProductDTO>(); 
-                cfg.CreateMap<ProductBrand, ProductBrandDTO>();
-                cfg.CreateMap<ProductCategory, ProductCategoryDTO>();
-                cfg.CreateMap<ProductSubCategory, ProductSubCategoryDTO>();
-            }).CreateMapper();
-
-            return mapper.Map<ProductDTO>(await _context.Products.GetAsync(id));
+            return mapper.Map<ProductDTO>(await context.Products.GetAsync(id));
         }
 
         public async Task<IEnumerable<ProductDTO>> GetProducts()
-        {
-            IMapper mapper = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Product, ProductDTO>()
-                    .ForMember(x => x.BrandName, opt => opt.MapFrom(source => source.Brand.Name))
-                    .ForMember(x => x.CategoryName, opt => opt.MapFrom(source => source.Category.Name))
-                    .ForMember(x => x.SubCategoryName, opt => opt.MapFrom(source => source.SubCategory.Name));
-            }).CreateMapper();
-                                                
-            return mapper.Map<IEnumerable<ProductDTO>>(await _context.Products.GetAllAsync());
+        {                                       
+            return mapper.Map<IEnumerable<ProductDTO>>(await context.Products.GetAllAsync());
         }
 
         public async Task AddProduct(ProductDTO product)
-        {
-            IMapper mapper = new MapperConfiguration(cfg => {
-                cfg.CreateMap<ProductDTO, Product>();
-                cfg.CreateMap<ProductBrandDTO, ProductBrand>();
-                cfg.CreateMap<ProductCategoryDTO, ProductCategory>();
-                cfg.CreateMap<ProductSubCategoryDTO, ProductSubCategory>();
-            }).CreateMapper();
-
-            await _context.Products.AddAsync(mapper.Map<Product>(product));
+        {            
+            await context.Products.AddAsync(mapper.Map<Product>(product));
         }
 
         public async Task EditProduct(ProductDTO product)
         {
-            Product _product = await _context.Products.GetAsync(product.Id);
+            Product _product = await context.Products.GetAsync(product.Id);
 
             if(_product != null)
-            {
-                IMapper mapper = new MapperConfiguration(cfg => {
-                    cfg.CreateMap<ProductDTO, Product>();
-                    cfg.CreateMap<ProductBrandDTO, ProductBrand>();
-                    cfg.CreateMap<ProductCategoryDTO, ProductCategory>();
-                    cfg.CreateMap<ProductSubCategoryDTO, ProductSubCategory>();
-                }).CreateMapper();
-
                 _product = mapper.Map<Product>(product);
-            }
 
-            await _context.Products.SaveChangesAsync();
+            await context.Products.SaveChangesAsync();
         }
 
         public async Task RemoveProduct(ProductDTO product)
         {
-            IMapper mapper = new MapperConfiguration(cfg => {
-                cfg.CreateMap<ProductDTO, Product>();
-                cfg.CreateMap<ProductBrandDTO, ProductBrand>();
-                cfg.CreateMap<ProductCategoryDTO, ProductCategory>();
-                cfg.CreateMap<ProductSubCategoryDTO, ProductSubCategory>();
-            }).CreateMapper();
-
-            await _context.Products.RemoveAsync(mapper.Map<Product>(product));
+            await context.Products.RemoveAsync(mapper.Map<Product>(product));
         }
 
         public async Task RemoveProduct(int id)
         {
-            await _context.Products.RemoveAsync(id);
+            await context.Products.RemoveAsync(id);
         }
 
         public async Task<IEnumerable<ProductDTO>> FindProducts(string searchString)
         {
-            IEnumerable<Product> searchResult = await _context.Products.FindAsync(product => 
+            IEnumerable<Product> searchResult = await context.Products.FindAsync(product => 
                 product.Name.Contains(searchString) | 
                 product.Brand.Name.Contains(searchString) | 
                 product.Description.Contains(searchString));
-
-            IMapper mapper = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Product, ProductDTO>();
-                cfg.CreateMap<ProductBrand, ProductBrandDTO>();
-                cfg.CreateMap<ProductCategory, ProductCategoryDTO>();
-                cfg.CreateMap<ProductSubCategory, ProductSubCategoryDTO>();
-            }).CreateMapper();
-
+                        
             return mapper.Map<IEnumerable<ProductDTO>>(searchResult);
         }
 
         public void Dispose()
         {
-            _context.Dispose();
+            context.Dispose();
         }
     }
 }

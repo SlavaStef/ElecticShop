@@ -16,6 +16,8 @@ namespace ElectricShop.Logic.AutoMapper
             {
                 x.AddProfile(new UserDTOtoUserMapperProfile());
                 x.AddProfile(new UserToUserDTOMapperProfile());
+                x.AddProfile(new ProductDTOtoProductProfile());
+                x.AddProfile(new ProductToProductDTOProfile());
             });
 
             IMapper mapper = config.CreateMapper();
