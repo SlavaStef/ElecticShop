@@ -5,15 +5,12 @@ using ElectricShop.Common.ViewModels;
 using ElectricShop.Data.Context;
 using ElectricShop.Data.Interfaces;
 using ElectricShop.Logic.Interfaces;
-using ElectricShop.Logic.MapperProfiles;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 

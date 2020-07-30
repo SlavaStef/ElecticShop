@@ -3,10 +3,7 @@ using ElectricShop.Common.Models;
 using ElectricShop.Common.ViewModels;
 using ElectricShop.Logic.Interfaces;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using System;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ElectricShop.Web.Areas.Administration.Controllers

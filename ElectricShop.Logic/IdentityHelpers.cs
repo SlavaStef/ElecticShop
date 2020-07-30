@@ -1,13 +1,5 @@
-﻿using ElectricShop.Common.Models;
-using ElectricShop.Logic.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ElectricShop.Logic.Interfaces;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
-using System.Web;
 
 namespace ElectricShop.Logic
 {

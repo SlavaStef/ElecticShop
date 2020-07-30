@@ -1,12 +1,8 @@
-﻿using ElectricShop.Common.DTO;
-using ElectricShop.Common.Models;
+﻿using ElectricShop.Common.Models;
 using ElectricShop.Common.ViewModels;
 using ElectricShop.Logic.Interfaces;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using System;
-using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;

@@ -1,10 +1,5 @@
 ﻿using AutoMapper;
 using ElectricShop.Logic.MapperProfiles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ElectricShop.Logic.AutoMapper
 {

@@ -1,7 +1,6 @@
 ﻿using ElectricShop.Common.Models;
 using ElectricShop.Logic;
 using ElectricShop.Logic.Interfaces;
-using ElectricShop.Logic.Services;
 using Microsoft.AspNet.Identity;
 using Owin;
 

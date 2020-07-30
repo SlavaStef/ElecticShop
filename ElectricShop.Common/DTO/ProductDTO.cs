@@ -1,6 +1,4 @@
-﻿using ElectricShop.Common.Models;
-
-namespace ElectricShop.Common.DTO
+﻿namespace ElectricShop.Common.DTO
 {
     public class ProductDTO
     {
