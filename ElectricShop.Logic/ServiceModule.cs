@@ -1,5 +1,7 @@
-﻿using ElectricShop.Data.Interfaces;
+﻿using AutoMapper;
+using ElectricShop.Data.Interfaces;
 using ElectricShop.Data.Repositories;
+using ElectricShop.Logic.AutoMapper;
 using ElectricShop.Logic.Interfaces;
 using ElectricShop.Logic.Services;
 using Ninject.Modules;
@@ -14,6 +16,8 @@ namespace ElectricShop.Logic
             Bind<IProductService>().To<ProductService>();
             Bind<IUserService>().To<UserService>();
             Bind<IRoleService>().To<RoleService>();
+
+            Bind<IMapper>().ToMethod(context => AutoMapperConfiguration.GetMapperConfiguration());
         }
     }
 }

@@ -22,25 +22,25 @@ namespace ElectricShop.Logic.Services
     public class UserService : IUserService
     {
         IUnitOfWork context { get; set; }
-        MapperConfiguration config = new MapperConfiguration(cfg =>
-        {
-            cfg.AddProfile<UserToUserDTOMapperProfile>();
-            cfg.AddProfile<UserDTOtoUserMapperProfile>();
+        IMapper mapper { get; set; } 
 
-        });
-
-        public UserService(IUnitOfWork context)
+        public UserService(IUnitOfWork context, IMapper mapper)
         {
             this.context = context;
+            this.mapper = mapper;
         }
 
 
-        public async Task<IEnumerable<AppUser>> GetUsers() => await context.UserManager.Users.ToListAsync();
+        public async Task<IEnumerable<UserDTO>> GetUsers()
+        {
+            List<AppUser> users = await context.UserManager.Users.ToListAsync();
+
+            return mapper.Map<List<UserDTO>>(users);
+        }
 
         public async Task<UserDTO> GetUser(string id)
         {
             AppUser user = await context.UserManager.FindByIdAsync(id);
-            IMapper mapper = new Mapper(config);
 
             return mapper.Map<UserDTO>(user);
         }
@@ -80,7 +80,7 @@ namespace ElectricShop.Logic.Services
         {
             AppUser _user = await context.UserManager.FindByIdAsync(user.Id);
 
-            IMapper mapper = new Mapper(config);
+            IMapper mapper = null;
             _user = mapper.Map(user, _user);
 
             IdentityResult userValid = await context.UserManager.UserValidator.ValidateAsync(_user);

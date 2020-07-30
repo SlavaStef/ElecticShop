@@ -12,11 +12,4 @@ namespace ElectricShop.Logic.MapperProfiles
         }
     }
 
-    public class UserDTOtoUserMapperProfile : Profile
-    {
-        public UserDTOtoUserMapperProfile()
-        {
-            CreateMap<UserDTO, AppUser>();
-        }
-    }
 }

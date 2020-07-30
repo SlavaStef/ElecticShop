@@ -13,7 +13,7 @@ namespace ElectricShop.Logic.Interfaces
 {
     public interface IUserService : IDisposable
     {
-        Task<IEnumerable<AppUser>> GetUsers();
+        Task<IEnumerable<UserDTO>> GetUsers();
         Task<UserDTO> GetUser(string id);
         Task<IdentityResult> CreateUser(AppUser user, string password);
         Task<IdentityResult> DeleteUser(string Id);

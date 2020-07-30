@@ -46,15 +46,15 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
 
         public async Task<ActionResult> Edit(string id)
         {
-            AppRole role = await roleService.GetRole(id);
-            string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
+            //AppRole role = await roleService.GetRole(id);
+            //string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
 
-            IEnumerable<AppUser> users = await userService.GetUsers();
+            //IEnumerable<AppUser> users = await userService.GetUsers();
 
-            IEnumerable<AppUser> members = users.Where(x => memberIDs.Any(y => y == x.Id));
-            IEnumerable<AppUser> nonMembers = users.Except(members);
+            //IEnumerable<AppUser> members = users.Where(x => memberIDs.Any(y => y == x.Id));
+            //IEnumerable<AppUser> nonMembers = users.Except(members);
 
-            return View(new RoleEditModel { Role = role, Members = members, NonMembers = nonMembers });
+            return null; // View(new RoleEditModel { Role = role, Members = members, NonMembers = nonMembers });
         }
 
         [HttpPost]

@@ -106,11 +106,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
+    <Compile Include="AutoMapper\UserDTOtoUserProfile.cs" />
     <Compile Include="IdentityHelpers.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IRoleService.cs" />
-    <Compile Include="MapperProfiles.cs" />
+    <Compile Include="AutoMapper\UserToUserDTOProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCreator.cs" />
     <Compile Include="ServiceModule.cs" />
