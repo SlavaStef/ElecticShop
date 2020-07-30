@@ -20,7 +20,7 @@ namespace ElectricShop.Web.Controllers
 
         public async Task<ActionResult> Index()
         {            
-            return View(await service.GetAllProductsAsync());
+            return View(await service.GetProducts());
         }
 
         [HttpGet]
@@ -30,7 +30,7 @@ namespace ElectricShop.Web.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                result = await service.FindProductsAsync(searchString);
+                result = await service.FindProducts(searchString);
             }
 
             return View(result);

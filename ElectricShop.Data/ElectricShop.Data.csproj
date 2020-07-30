@@ -151,6 +151,10 @@
     <Compile Include="Migrations\202007281313516_Initial.designer.cs">
       <DependentUpon>202007281313516_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007301212186_Change product model.cs" />
+    <Compile Include="Migrations\202007301212186_Change product model.designer.cs">
+      <DependentUpon>202007301212186_Change product model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ProductBrandRepository.cs" />
@@ -173,6 +177,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202007281313516_Initial.resx">
       <DependentUpon>202007281313516_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301212186_Change product model.resx">
+      <DependentUpon>202007301212186_Change product model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

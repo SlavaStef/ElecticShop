@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ElectricShop.Common.DTO.ProductDTO>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -15,7 +16,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Brand.Name)
+                @Html.DisplayFor(modelItem => item.BrandName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -27,7 +28,7 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SubCategory.Name)
+                @Html.DisplayFor(modelItem => item.SubCategoryName)
             </td>
 
             <td>

@@ -17,7 +17,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         }
 
 
-        public async Task<ActionResult> Index() => View(await service.GetAllProductsAsync());
+        public async Task<ActionResult> Index() => View(await service.GetProducts());
 
         public ActionResult Create() => View();
 
@@ -26,7 +26,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         {
             if(ModelState.IsValid)
             {
-                await service.AddProductAsync(product);
+                await service.AddProduct(product);
                 return RedirectToAction("Index");
             }
             return View(product);
@@ -37,7 +37,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
             if(productId == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            ProductDTO product = await service.GetProductAsync((int)productId);
+            ProductDTO product = await service.GetProduct((int)productId);
 
             if (product == null)
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                await service.EditProductAsync(product);
+                await service.EditProduct(product);
 
                 return RedirectToAction("Index");
             }
@@ -64,12 +64,12 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
             if (productId == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            ProductDTO product = await service.GetProductAsync((int)productId);
+            ProductDTO product = await service.GetProduct((int)productId);
 
             if (product == null)
                 return HttpNotFound();
 
-            await service.RemoveProductAsync(product);
+            await service.RemoveProduct(product);
             
             return RedirectToAction("Index");
         }

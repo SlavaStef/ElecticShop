@@ -7,12 +7,12 @@ namespace ElectricShop.Logic.Interfaces
 {
     public interface IProductService : IDisposable
     {
-        Task AddProductAsync(ProductDTO product);
-        Task<ProductDTO> GetProductAsync(int id);
-        Task<IEnumerable<ProductDTO>> GetAllProductsAsync();
-        Task EditProductAsync(ProductDTO product);
-        Task RemoveProductAsync(ProductDTO product);
-        Task RemoveProductAsync(int id);
-        Task<IEnumerable<ProductDTO>> FindProductsAsync(string searchString);
+        Task AddProduct(ProductDTO product);
+        Task<ProductDTO> GetProduct(int id);
+        Task<IEnumerable<ProductDTO>> GetProducts();
+        Task EditProduct(ProductDTO product);
+        Task RemoveProduct(ProductDTO product);
+        Task RemoveProduct(int id);
+        Task<IEnumerable<ProductDTO>> FindProducts(string searchString);
     }
 }

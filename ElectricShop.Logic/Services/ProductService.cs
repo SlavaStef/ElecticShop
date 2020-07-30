@@ -17,20 +17,8 @@ namespace ElectricShop.Logic.Services
             _context = context;
         }
 
-
-        public async Task AddProductAsync(ProductDTO product)
-        {
-            IMapper mapper = new MapperConfiguration(cfg => {
-                cfg.CreateMap<ProductDTO, Product>();
-                cfg.CreateMap<ProductBrandDTO, ProductBrand>();
-                cfg.CreateMap<ProductCategoryDTO, ProductCategory>();
-                cfg.CreateMap<ProductSubCategoryDTO, ProductSubCategory>();
-            }).CreateMapper();
-
-            await _context.Products.AddAsync(mapper.Map<Product>(product));
-        }
-
-        public async Task<ProductDTO> GetProductAsync(int id)
+        
+        public async Task<ProductDTO> GetProduct(int id)
         {
             IMapper mapper = new MapperConfiguration(cfg => { 
                 cfg.CreateMap<Product, ProductDTO>(); 
@@ -42,19 +30,31 @@ namespace ElectricShop.Logic.Services
             return mapper.Map<ProductDTO>(await _context.Products.GetAsync(id));
         }
 
-        public async Task<IEnumerable<ProductDTO>> GetAllProductsAsync()
+        public async Task<IEnumerable<ProductDTO>> GetProducts()
         {
             IMapper mapper = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Product, ProductDTO>();
-                cfg.CreateMap<ProductBrand, ProductBrandDTO>();
-                cfg.CreateMap<ProductCategory, ProductCategoryDTO>();
-                cfg.CreateMap<ProductSubCategory, ProductSubCategoryDTO>();
+                cfg.CreateMap<Product, ProductDTO>()
+                    .ForMember(x => x.BrandName, opt => opt.MapFrom(source => source.Brand.Name))
+                    .ForMember(x => x.CategoryName, opt => opt.MapFrom(source => source.Category.Name))
+                    .ForMember(x => x.SubCategoryName, opt => opt.MapFrom(source => source.SubCategory.Name));
             }).CreateMapper();
                                                 
             return mapper.Map<IEnumerable<ProductDTO>>(await _context.Products.GetAllAsync());
         }
 
-        public async Task EditProductAsync(ProductDTO product)
+        public async Task AddProduct(ProductDTO product)
+        {
+            IMapper mapper = new MapperConfiguration(cfg => {
+                cfg.CreateMap<ProductDTO, Product>();
+                cfg.CreateMap<ProductBrandDTO, ProductBrand>();
+                cfg.CreateMap<ProductCategoryDTO, ProductCategory>();
+                cfg.CreateMap<ProductSubCategoryDTO, ProductSubCategory>();
+            }).CreateMapper();
+
+            await _context.Products.AddAsync(mapper.Map<Product>(product));
+        }
+
+        public async Task EditProduct(ProductDTO product)
         {
             Product _product = await _context.Products.GetAsync(product.Id);
 
@@ -73,7 +73,7 @@ namespace ElectricShop.Logic.Services
             await _context.Products.SaveChangesAsync();
         }
 
-        public async Task RemoveProductAsync(ProductDTO product)
+        public async Task RemoveProduct(ProductDTO product)
         {
             IMapper mapper = new MapperConfiguration(cfg => {
                 cfg.CreateMap<ProductDTO, Product>();
@@ -85,12 +85,12 @@ namespace ElectricShop.Logic.Services
             await _context.Products.RemoveAsync(mapper.Map<Product>(product));
         }
 
-        public async Task RemoveProductAsync(int id)
+        public async Task RemoveProduct(int id)
         {
             await _context.Products.RemoveAsync(id);
         }
 
-        public async Task<IEnumerable<ProductDTO>> FindProductsAsync(string searchString)
+        public async Task<IEnumerable<ProductDTO>> FindProducts(string searchString)
         {
             IEnumerable<Product> searchResult = await _context.Products.FindAsync(product => 
                 product.Name.Contains(searchString) | 
