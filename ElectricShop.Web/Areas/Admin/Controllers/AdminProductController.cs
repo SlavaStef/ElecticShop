@@ -4,7 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace ElectricShop.Web.Areas.Administration.Controllers
+namespace ElectricShop.Web.Areas.Admin.Controllers
 {
     [Authorize]
     public class AdminProductController : Controller
@@ -61,15 +61,8 @@ namespace ElectricShop.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<ActionResult> Delete(int? productId)
         {
-            if (productId == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            ProductDTO product = await service.GetProduct((int)productId);
-
-            if (product == null)
-                return HttpNotFound();
-
-            await service.RemoveProduct(product);
+            if (productId != null)
+                await service.RemoveProduct((int)productId);
             
             return RedirectToAction("Index");
         }

@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace ElectricShop.Web.Areas.Administration.Controllers
+namespace ElectricShop.Web.Areas.Admin.Controllers
 {
     [Authorize]
     public class AdminUserController : Controller

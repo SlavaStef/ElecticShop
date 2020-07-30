@@ -3,6 +3,7 @@ using ElectricShop.Common.DTO;
 using ElectricShop.Common.Models;
 using ElectricShop.Data.Interfaces;
 using ElectricShop.Logic.Interfaces;
+using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -52,7 +53,13 @@ namespace ElectricShop.Logic.Services
 
         public async Task RemoveProduct(int id)
         {
-            await context.Products.RemoveAsync(id);
+            Product product = await context.Products.GetAsync(id);
+            
+            if (product != null)
+            {
+                await context.Products.RemoveAsync(product);
+                await context.CompleteAsync();
+            }
         }
 
         public async Task<IEnumerable<ProductDTO>> FindProducts(string searchString)

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace ElectricShop.Web.Areas.Administration.Controllers
+namespace ElectricShop.Web.Areas.Admin.Controllers
 {
     public class AdminRoleController : Controller
     {

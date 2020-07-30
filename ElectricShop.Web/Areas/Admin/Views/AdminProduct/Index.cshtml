@@ -32,11 +32,11 @@
             </td>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { productId = item.Id }) |
-                @using (Html.BeginForm("Delete", "ProductAdmin"))
+                @Html.ActionLink("Edit", "Edit", new { productId = item.Id }, new { @class = "btn btn-success" }) |
+
+                @using (Html.BeginForm("Delete", "AdminProduct", new { productId = item.Id }, FormMethod.Post, null ))
                 {
-                    @Html.Hidden("ProductId", item.Id)
-                    <input type="submit" class="btn" value="Delete" />
+                    <input type="submit" class="btn btn-danger" value="Delete" />
                 }
             </td>
         </tr>

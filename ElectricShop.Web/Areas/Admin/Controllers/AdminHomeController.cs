@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace ElectricShop.Web.Areas.Administration.Controllers
+namespace ElectricShop.Web.Areas.Admin.Controllers
 {
     public class AdminHomeController : Controller
     {

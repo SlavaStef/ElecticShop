@@ -48,11 +48,11 @@ namespace ElectricShop.Data.Repositories
             await Task.Run(() => _context.Set<TEntity>().Remove(entity));
         }
 
-        public async Task RemoveAsync(int id)
-        {
-            TEntity product = await GetAsync(id);
-            await Task.Run(() => _context.Set<TEntity>().Remove(product));
-        }
+        //public async Task RemoveAsync(int id)
+        //{
+        //    TEntity product = await GetAsync(id);
+        //    await Task.Run(() => _context.Set<TEntity>().Remove(product));
+        //}
 
         public async Task RemoveRangeAsync(IEnumerable<TEntity> entities)
         {

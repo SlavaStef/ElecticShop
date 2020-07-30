@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace ElectricShop.Web.Areas.Administration
+namespace ElectricShop.Web.Areas.Admin
 {
     public class AdministrationAreaRegistration : AreaRegistration 
     {
