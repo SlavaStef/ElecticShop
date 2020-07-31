@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-@using (Html.BeginForm("Edit", "AdminUser", FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     <h2>Edit User @Model.UserName</h2>
     <hr />

@@ -9,12 +9,12 @@ using System.Web.Mvc;
 namespace ElectricShop.Web.Areas.Admin.Controllers
 {
     [Authorize]
-    public class AdminUserController : Controller
+    public class UserController : Controller
     {
         IUserService userService { get; set; }
 
 
-        public AdminUserController(IUserService service)
+        public UserController(IUserService service)
         {
             userService = service;
         }

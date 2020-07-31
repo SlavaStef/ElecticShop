@@ -7,11 +7,11 @@ using System.Web.Mvc;
 namespace ElectricShop.Web.Areas.Admin.Controllers
 {
     [Authorize]
-    public class AdminProductController : Controller
+    public class ProductController : Controller
     {
         public IProductService service { get; set; }
 
-        public AdminProductController(IProductService service)
+        public ProductController(IProductService service)
         {
             this.service = service;
         }

@@ -56,12 +56,12 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { productId = item.Id }, new { @class = "btn btn-success" })
 
-            @using (Html.BeginForm("Details", "AdminProduct", new { productId = item.Id }, FormMethod.Post, null))
+            @using (Html.BeginForm("Details", "Product", new { productId = item.Id }, FormMethod.Post, null))
             {
                 <input type="submit" class="btn btn-info" value="Details" />
             } 
 
-            @using (Html.BeginForm("Delete", "AdminProduct", new { productId = item.Id }, FormMethod.Post, null))
+            @using (Html.BeginForm("Delete", "Product", new { productId = item.Id }, FormMethod.Post, null))
             {
                 <input type="submit" class="btn btn-danger" value="Delete" />
             }

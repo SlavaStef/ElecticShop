@@ -7,13 +7,13 @@ using System.Web.Mvc;
 
 namespace ElectricShop.Web.Areas.Admin.Controllers
 {
-    public class AdminRoleController : Controller
+    public class RoleController : Controller
     {
         IRoleService roleService { get; set; }
         IUserService userService { get; set; }
 
 
-        public AdminRoleController(IRoleService roleService, IUserService userService)
+        public RoleController(IRoleService roleService, IUserService userService)
         {
             this.roleService = roleService;
             this.userService = userService;
