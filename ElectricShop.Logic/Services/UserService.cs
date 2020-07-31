@@ -76,8 +76,7 @@ namespace ElectricShop.Logic.Services
         public async Task<IdentityResult> EditUser(UserDTO user)
         {
             AppUser _user = await context.UserManager.FindByIdAsync(user.Id);
-
-            IMapper mapper = null;
+                        
             _user = mapper.Map(user, _user);
 
             IdentityResult userValid = await context.UserManager.UserValidator.ValidateAsync(_user);

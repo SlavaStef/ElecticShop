@@ -51,7 +51,7 @@ namespace ElectricShop.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 await service.EditProduct(product);
-
+                
                 return RedirectToAction("Index");
             }
             else

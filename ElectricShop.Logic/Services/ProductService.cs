@@ -42,7 +42,7 @@ namespace ElectricShop.Logic.Services
             Product _product = await context.Products.GetAsync(product.Id);
 
             if(_product != null)
-                _product = mapper.Map<Product>(product);
+                _product = mapper.Map(product, _product);
 
             await context.Products.SaveChangesAsync();
         }
