@@ -32,6 +32,12 @@ namespace ElectricShop.Web.Areas.Admin.Controllers
             return View(product);
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Details(int? productId)
+        {
+            return View(await service.GetProduct((int)productId));
+        }
+
         public async Task<ActionResult> Edit(int? productId)
         {
             if(productId == null)
