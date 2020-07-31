@@ -22,10 +22,10 @@ namespace ElectricShop.Logic.Services
         }
 
 
-        public async Task<IEnumerable<AppRole>> GetRoles() => await context.RoleManager.Roles.ToListAsync();
-
         public async Task<AppRole> GetRole(string id) => await context.RoleManager.FindByIdAsync(id);
 
+        public async Task<IEnumerable<AppRole>> GetRoles() => await context.RoleManager.Roles.ToListAsync();
+                
         public async Task<IdentityResult> CreateRole(string name)
         {
             return await context.RoleManager.CreateAsync(new AppRole(name));

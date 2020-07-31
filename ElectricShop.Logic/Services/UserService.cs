@@ -28,13 +28,6 @@ namespace ElectricShop.Logic.Services
         }
 
 
-        public async Task<IEnumerable<UserDTO>> GetUsers()
-        {
-            List<AppUser> users = await context.UserManager.Users.ToListAsync();
-
-            return mapper.Map<List<UserDTO>>(users);
-        }
-
         public async Task<UserDTO> GetUser(string id)
         {
             AppUser user = await context.UserManager.FindByIdAsync(id);
@@ -42,6 +35,13 @@ namespace ElectricShop.Logic.Services
             return mapper.Map<UserDTO>(user);
         }
 
+        public async Task<IEnumerable<UserDTO>> GetUsers()
+        {
+            List<AppUser> users = await context.UserManager.Users.ToListAsync();
+
+            return mapper.Map<List<UserDTO>>(users);
+        }
+        
         public async Task<IdentityResult> CreateUser(AppUser user, string password)
         {
             IdentityResult createResult = null;
@@ -55,6 +55,23 @@ namespace ElectricShop.Logic.Services
             }
 
             return createResult;                
+        }
+
+        public async Task<IdentityResult> EditUser(UserDTO user)
+        {
+            AppUser _user = await context.UserManager.FindByIdAsync(user.Id);
+
+            _user = mapper.Map(user, _user);
+
+            IdentityResult userValid = await context.UserManager.UserValidator.ValidateAsync(_user);
+            IdentityResult updateResult = null;
+
+            if (userValid.Succeeded)
+            {
+                updateResult = await context.UserManager.UpdateAsync(_user);
+            }
+
+            return updateResult;
         }
 
         public async Task<IdentityResult> DeleteUser(string Id)
@@ -71,23 +88,6 @@ namespace ElectricShop.Logic.Services
             }
 
             return deleteResult;            
-        }
-
-        public async Task<IdentityResult> EditUser(UserDTO user)
-        {
-            AppUser _user = await context.UserManager.FindByIdAsync(user.Id);
-                        
-            _user = mapper.Map(user, _user);
-
-            IdentityResult userValid = await context.UserManager.UserValidator.ValidateAsync(_user);
-            IdentityResult updateResult = null;
-
-            if (userValid.Succeeded)
-            {
-                updateResult = await context.UserManager.UpdateAsync(_user);
-            }
-
-            return updateResult;
         }
 
         public async Task<ClaimsIdentity> Authenticate(LoginViewModel model)
