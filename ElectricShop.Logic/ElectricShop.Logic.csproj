@@ -107,8 +107,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
+    <Compile Include="AutoMapper\RegisterViewModelToUserDTOProfile.cs" />
     <Compile Include="AutoMapper\ProductDTOtoProductProfile.cs" />
     <Compile Include="AutoMapper\ProductToProductDTOProfile.cs" />
+    <Compile Include="AutoMapper\RegisterViewModelToUserProfile.cs" />
     <Compile Include="AutoMapper\UserDTOtoUserProfile.cs" />
     <Compile Include="IdentityHelpers.cs" />
     <Compile Include="Interfaces\IProductService.cs" />

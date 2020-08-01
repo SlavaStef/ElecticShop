@@ -31,14 +31,14 @@ namespace ElectricShop.Logic.Services
         public async Task<UserDTO> GetUser(string id)
         {
             AppUser user = await context.UserManager.FindByIdAsync(id);
-
+            
             return mapper.Map<UserDTO>(user);
         }
 
         public async Task<IEnumerable<UserDTO>> GetUsers()
         {
             List<AppUser> users = await context.UserManager.Users.ToListAsync();
-
+            
             return mapper.Map<List<UserDTO>>(users);
         }
         
@@ -49,12 +49,12 @@ namespace ElectricShop.Logic.Services
             if (await context.UserManager.FindByEmailAsync(user.Email) == null)
             {
                 createResult = await context.UserManager.CreateAsync(user, password);
-                
-                if(createResult.Succeeded)
-                    await context.CompleteAsync();
             }
+            
+            if (createResult.Succeeded)
+                await context.CompleteAsync();
 
-            return createResult;                
+            return createResult;
         }
 
         public async Task<IdentityResult> EditUser(UserDTO user)

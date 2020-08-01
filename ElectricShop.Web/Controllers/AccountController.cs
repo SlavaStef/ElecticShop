@@ -1,4 +1,5 @@
-﻿using ElectricShop.Common.Models;
+﻿using AutoMapper;
+using ElectricShop.Common.Models;
 using ElectricShop.Common.ViewModels;
 using ElectricShop.Logic.Interfaces;
 using Microsoft.AspNet.Identity;
@@ -13,38 +14,31 @@ namespace ElectricShop.Web.Controllers
     public class AccountController : Controller
     {
         IUserService userService;
+        IMapper mapper;
         private IAuthenticationManager AuthManager { get { return HttpContext.GetOwinContext().Authentication; } }
 
-        public AccountController(IUserService service)
+        public AccountController(IUserService service, IMapper mapper)
         {
             userService = service;
+            this.mapper = mapper;
         }
 
 
         public ActionResult Register() => View();
 
         [HttpPost]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel user)
         {
             if (ModelState.IsValid)
             {
-                AppUser user = new AppUser 
-                { 
-                    UserName = model.Name, 
-                    Email = model.Email, 
-                    FirstName = model.FirstName, 
-                    LastName = model.LastName, 
-                    City = model.City, 
-                    Address = model.Address, 
-                    PhoneNumber = model.PhoneNumber 
-                };
-
-                IdentityResult result = await userService.CreateUser(user, model.Password);
+                string password = user.Password;
+                AppUser _user = mapper.Map<AppUser>(user);
+                IdentityResult result = await userService.CreateUser(_user, password);
 
                 if (result.Succeeded)
                     return RedirectToAction("Index", "Home");
             }
-            return View(model);
+            return View(user);
         }
 
         public ActionResult Login(string returnUrl)

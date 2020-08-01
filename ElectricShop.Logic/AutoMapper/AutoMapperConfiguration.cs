@@ -13,6 +13,8 @@ namespace ElectricShop.Logic.AutoMapper
                 x.AddProfile(new UserToUserDTOMapperProfile());
                 x.AddProfile(new ProductDTOtoProductProfile());
                 x.AddProfile(new ProductToProductDTOProfile());
+                x.AddProfile(new RegisterViewModelToUserDTOProfile());
+                x.AddProfile(new RegisterViewModelToUserProfile());
             });
 
             IMapper mapper = config.CreateMapper();

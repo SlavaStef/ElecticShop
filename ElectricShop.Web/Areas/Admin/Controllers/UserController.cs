@@ -1,4 +1,5 @@
-﻿using ElectricShop.Common.DTO;
+﻿using AutoMapper;
+using ElectricShop.Common.DTO;
 using ElectricShop.Common.Models;
 using ElectricShop.Common.ViewModels;
 using ElectricShop.Logic.Interfaces;
@@ -12,31 +13,40 @@ namespace ElectricShop.Web.Areas.Admin.Controllers
     public class UserController : Controller
     {
         IUserService userService { get; set; }
+        IMapper mapper { get; set; }
 
 
-        public UserController(IUserService service)
+        public UserController(IUserService service, IMapper mapper)
         {
             userService = service;
+            this.mapper = mapper;
         }
 
 
         public async Task<ActionResult> Index() => View(await userService.GetUsers());
 
+        [HttpPost]
+        public async Task<ActionResult> Details(string userId)
+        {
+            UserDTO user = await userService.GetUser(userId);
+            return View(user);
+        }
+
         public ActionResult Create() => View();
 
         [HttpPost]
-        public async Task<ActionResult> Create(RegisterViewModel model)
+        public async Task<ActionResult> Create(RegisterViewModel user)
         {
             if(ModelState.IsValid)
             {
-                AppUser user = new AppUser { UserName = model.Name, Email = model.Email };
-
-                IdentityResult result = await userService.CreateUser(user, model.Password);
+                string password = user.Password;
+                AppUser _user = mapper.Map<AppUser>(user);
+                IdentityResult result = await userService.CreateUser(_user, password);
 
                 if (result.Succeeded)
                     return RedirectToAction("Index");
             }
-            return View(model);
+            return View(user);
         }
 
         [HttpPost]
