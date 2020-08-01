@@ -10,8 +10,7 @@ namespace ElectricShop.Logic.AutoMapper
         {
             CreateMap<ProductDTO, Product>();
                 //.ForMember(x => x.Brand.Name, opt => opt.MapFrom(source => source.BrandName))
-                //.ForMember(x => x.Category.Name, opt => opt.MapFrom(source => source.CategoryName))
-                //.ForMember(x => x.SubCategory.Name, opt => opt.MapFrom(source => source.SubCategoryName));
+                //.ForMember(x => x.Category.Name, opt => opt.MapFrom(source => source.CategoryName));
         }
     }
 }

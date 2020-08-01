@@ -20,7 +20,6 @@ namespace ElectricShop.Data.Repositories
             ProductBrands = new ProductBrandRepository(_context);
             ProductCategories = new ProductCategoryRepository(_context);
             Products = new ProductRepository(_context);
-            ProductSubCategories = new ProductSubCategoryRepository(_context);
             UserManager = new AppUserManager(new UserStore<AppUser>(_context));
             RoleManager = new AppRoleManager(new RoleStore<AppRole>(_context));
 
@@ -29,7 +28,6 @@ namespace ElectricShop.Data.Repositories
         public ProductBrandRepository ProductBrands { get; private set; }
         public ProductCategoryRepository ProductCategories { get; private set; }
         public ProductRepository Products { get; private set; }
-        public ProductSubCategoryRepository ProductSubCategories { get; private set; }
         public AppUserManager UserManager { get; private set; }
         public AppRoleManager RoleManager { get; private set; }
 

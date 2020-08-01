@@ -142,25 +142,15 @@
     <Compile Include="Context\ApplicationDbInitializer.cs" />
     <Compile Include="Interfaces\IProductBrandRepository.cs" />
     <Compile Include="Interfaces\IProductCategoryRepository.cs" />
-    <Compile Include="Interfaces\IProductSubCategoryRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Context\ApplicationContext.cs" />
-    <Compile Include="Migrations\202007281313516_Initial.cs" />
-    <Compile Include="Migrations\202007281313516_Initial.designer.cs">
-      <DependentUpon>202007281313516_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202007301212186_Change product model.cs" />
-    <Compile Include="Migrations\202007301212186_Change product model.designer.cs">
-      <DependentUpon>202007301212186_Change product model.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ProductBrandRepository.cs" />
     <Compile Include="Repositories\ProductCategoryRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
-    <Compile Include="Repositories\ProductSubCategoryRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
   </ItemGroup>
@@ -173,14 +163,6 @@
       <Project>{7a15add8-66c9-4df8-b9cb-ad8bbe7c52f7}</Project>
       <Name>ElectricShop.Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202007281313516_Initial.resx">
-      <DependentUpon>202007281313516_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007301212186_Change product model.resx">
-      <DependentUpon>202007301212186_Change product model.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

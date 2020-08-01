@@ -9,7 +9,6 @@ namespace ElectricShop.Data.Interfaces
         ProductBrandRepository ProductBrands { get; }
         ProductCategoryRepository ProductCategories { get; }
         ProductRepository Products { get; }
-        ProductSubCategoryRepository ProductSubCategories { get; }
 
         AppUserManager UserManager { get; }
         AppRoleManager RoleManager { get; }

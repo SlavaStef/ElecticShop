@@ -6,7 +6,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(ElectricShop.Data.Context.ApplicationContext context)
