@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ElectricShop.Common.DTO.ProductDTO>
+﻿@using ElectricShop.Common.DTO;
+@model IEnumerable<ElectricShop.Common.DTO.ProductDTO>
 
 @{
     ViewBag.Title = "Products";
@@ -7,7 +8,7 @@
 <h2>Products</h2>
 
 <div class="container-fluid no-gutters">
-    @foreach (var product in Model)
+    @foreach (ProductDTO product in Model)
     {
         <div class="row">
             <div class="col">
@@ -26,6 +27,16 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col">
+                @using(Html.BeginForm("AddToCart", "Cart"))
+                {
+                    <div class="pull-right">
+                        @Html.Hidden("productId", product.Id)
+                        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                        <input type="submit" class="btn btn-success" value="Add to cart" />
+                    </div>
+                }
             </div>
         </div>
     }
