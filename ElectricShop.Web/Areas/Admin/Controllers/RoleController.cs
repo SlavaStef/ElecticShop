@@ -1,7 +1,10 @@
-﻿using ElectricShop.Common.Models;
+﻿using ElectricShop.Common.DTO;
+using ElectricShop.Common.Models;
 using ElectricShop.Logic.Interfaces;
 using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -39,15 +42,15 @@ namespace ElectricShop.Web.Areas.Admin.Controllers
 
         public async Task<ActionResult> Edit(string id)
         {
-            //AppRole role = await roleService.GetRole(id);
-            //string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
+            AppRole role = await roleService.GetRole(id);
+            string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
 
-            //IEnumerable<AppUser> users = await userService.GetUsers();
+            IEnumerable<UserDTO> users = await userService.GetUsers();
 
-            //IEnumerable<AppUser> members = users.Where(x => memberIDs.Any(y => y == x.Id));
-            //IEnumerable<AppUser> nonMembers = users.Except(members);
+            IEnumerable<UserDTO> members = users.Where(x => memberIDs.Any(y => y == x.Id));
+            IEnumerable<UserDTO> nonMembers = users.Except(members);
 
-            return null; // View(new RoleEditModel { Role = role, Members = members, NonMembers = nonMembers });
+            return View(new RoleEditModel { Role = role, Members = members, NonMembers = nonMembers });
         }
 
         [HttpPost]

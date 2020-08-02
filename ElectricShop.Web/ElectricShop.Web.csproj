@@ -240,9 +240,9 @@
     <Content Include="Areas\Admin\Views\Create.cshtml" />
     <Content Include="Areas\Admin\Views\User\Error.cshtml" />
     <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminRole\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminRole\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminRole\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminMenuPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />

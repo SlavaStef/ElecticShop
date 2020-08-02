@@ -1,4 +1,5 @@
 ﻿@using ElectricShop.Common.Models
+@using ElectricShop.Common.DTO
 
 @model RoleEditModel
 
@@ -21,7 +22,7 @@
             else
             {
                 <tr><td>User ID</td><td>Add To Role</td></tr>
-                foreach (AppUser user in Model.NonMembers)
+                foreach (UserDTO user in Model.NonMembers)
                 {
                     <tr>
                         <td>@user.UserName</td>
@@ -43,7 +44,7 @@
             else
             {
                 <tr><td>User ID</td><td>Remove From Role</td></tr>
-                foreach (AppUser user in Model.Members)
+                foreach (UserDTO user in Model.Members)
                 {
                     <tr>
                         <td>@user.UserName</td>

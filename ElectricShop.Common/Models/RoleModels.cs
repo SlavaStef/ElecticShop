@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ElectricShop.Common.DTO;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ElectricShop.Common.Models
@@ -6,8 +7,8 @@ namespace ElectricShop.Common.Models
     public class RoleEditModel
     {
         public AppRole Role { get; set; }
-        public IEnumerable<AppUser> Members { get; set; }
-        public IEnumerable<AppUser> NonMembers { get; set; }
+        public IEnumerable<UserDTO> Members { get; set; }
+        public IEnumerable<UserDTO> NonMembers { get; set; }
     }
 
     public class RoleModificationModel
