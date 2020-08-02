@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace ElectricShop.Web.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         IRoleService roleService { get; set; }
@@ -23,7 +24,11 @@ namespace ElectricShop.Web.Areas.Admin.Controllers
         }
 
 
-        public async Task<ActionResult> Index() => View(await roleService.GetRoles());
+        public async Task<ActionResult> Index()
+        {
+            IEnumerable<AppRole> roles = await roleService.GetRoles();
+            return View(roles);
+        }
 
         public ActionResult Create() => View();
 

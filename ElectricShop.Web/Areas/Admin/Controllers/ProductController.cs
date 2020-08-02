@@ -1,12 +1,13 @@
 ﻿using ElectricShop.Common.DTO;
 using ElectricShop.Logic.Interfaces;
+using System.EnterpriseServices;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ElectricShop.Web.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize (Roles = "Admin")]
     public class ProductController : Controller
     {
         public IProductService service { get; set; }
